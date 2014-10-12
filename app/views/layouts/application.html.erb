@@ -5,6 +5,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Pulpo Yachay" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pulpo Yachay" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -12,9 +13,25 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3"> 
+          <p>izquierda</p>
+        </div><!--/col-sm-3 left-->
+        <div class="col-sm-9">
+          <h3>Dashboard col-sm-9 centro izquierda</h3>
+          <hr>
+          <div class="row">
+            <div class="col-md-7">
+               <%= render 'layouts/messages' %>
+               <%= yield %>
+            </div><!--/col-md-7 center-left-->
+            <div class="col-md-5">
+              <p>col-md-5 para menus</p>
+            </div><!--/col-md-5 center-rigth-->
+          </div><!--/row inside col-sm-9-->
+        </div><!--/col-sm-9 rigth-->
+      </div><!--/row-->
+    </div><!--/container-->
   </body>
 </html>

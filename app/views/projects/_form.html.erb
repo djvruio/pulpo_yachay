@@ -1,0 +1,46 @@
+<%= form_for @project, :html => { :class => "form form-vertical" } do |f| %>
+<%= render "shared/errors", object: @project %>
+
+<div class="control-group">
+  <%= f.label :name %>
+  <div class="controls">
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+</div>  
+
+<div class="control-group">
+ <%= f.label :description %>
+ <div class="controls">
+   <%= f.text_area :description %>   
+ </div>
+</div> 
+
+<div class="control-group">
+ <%= f.label :estimated_budget %>
+ <div class="controls">
+   <%= f.number_field :estimated_budget %>
+ </div>
+</div> 
+
+<div class="control-group">
+  <%= f.label :is_strategic %>      
+  <div class="controls">
+    <%= f.check_box :is_strategic %>
+  </div>
+</div> 
+
+<div class="control-group">
+ <%= f.label :status%>
+ <div class="controls">
+  <%= f.select :status, Project.statuses.keys.map {|status| [status.titleize, status]}, prompt: 'Pick one' %>   
+</div>
+</div>
+
+<div class="control-group">
+  <label></label>
+  <div class="controls">
+    <%= f.submit %>
+    <%= link_to "Cancel", projects_path, class: 'button' %>
+  </div>
+</div>     
+<% end %>
