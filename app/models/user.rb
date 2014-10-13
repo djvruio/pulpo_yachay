@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :memberships, dependent: :destroy
   has_many :projects, through: :memberships
+  #has_many :tasks, dependent: :destroy
 
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?

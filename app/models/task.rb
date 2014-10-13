@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :project
+  belongs_to :user
   
   enum complexity: [:low, :medium, :high]
   enum score: [:bad, :more_or_less, :good]
