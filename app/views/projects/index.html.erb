@@ -1,9 +1,10 @@
+<%= link_to 'Create Project', new_project_path %>
 <ul>
 <% @projects.each do |project| %>
 <li>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4><%= link_to(project.name, project) %> <%= format_status(project) %></h4>
+      <h4><%= link_to(project.name, project_tasks_path(project)) %> <%= format_status(project) %></h4>
      
     </div><!--/panel-heading--> 
     <div class="panel-body">

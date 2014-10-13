@@ -1,8 +1,13 @@
 class TasksController < ApplicationController
+  respond_to :html, :xml, :json
+  
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
 
   def index
-    @tasks = Task.all
+    #fail
+    #binding.pry
+    @tasks = @project.tasks
     respond_with(@tasks)
   end
 
@@ -11,36 +16,48 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
-    respond_with(@task)
+    @task = @project.tasks.new
+    #respond_with(@task)
   end
 
   def edit
   end
 
   def create
-    @task = Task.new(task_params)
-    flash[:notice] = 'Task was successfully created.' if @task.save
-    respond_with(@task)
+    @task = @project.tasks.new(task_params)
+    if @task.save
+      redirect_to project_tasks_path(@project), notice:'Task was successfully created.'
+    else
+      render :new
+    end
   end
 
-
   def update
-    flash[:notice] = 'Task was successfully updated.' if @task.update(task_params)
-    respond_with(@task)
+    if @task.update(task_params)
+      redirect_to project_tasks_path(@project), notice: 'Task was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
     @task.destroy
-    respond_with(@task)
+    respond_to do |format|
+      format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully deleted.' }
+      format.json { head :ok }
+    end
   end
 
   private
-    def set_task
-      @task = Task.find(params[:id])
-    end
+     def set_task
+       @task = Task.find(params[:id])
+     end
 
     def task_params
-      params.require(:task).permit(:description, :deadline, :complexity, :score, :project_id)
+      params.require(:task).permit(:description, :deadline, :complexity, :score, :status, :project_id)
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 end

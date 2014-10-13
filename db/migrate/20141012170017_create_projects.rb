@@ -3,9 +3,9 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.string :name
       t.text :description
-      t.decimal :estimated_budget, default: 0.0, null: false
+      t.decimal :estimated_budget, default: 0, null: false
       t.boolean :is_strategic, default: false, null: false
-      t.integer :status, default: 1, null: false
+      t.integer :status, default: 0, null: false
 
       t.timestamps
     end

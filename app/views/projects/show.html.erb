@@ -1,4 +1,7 @@
 
+<%= link_to 'Show tasks', project_tasks_path(@project) %>
+
+ 
 <p>
   <strong>Description:</strong>
   <%= @project.name %>
@@ -25,4 +28,6 @@
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', projects_path %> |
+<%= link_to 'Create task', new_project_task_path(@project) %>
+

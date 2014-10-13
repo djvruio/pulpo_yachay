@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20141012203400) do
     t.text     "description"
     t.decimal  "estimated_budget", default: 0.0,   null: false
     t.boolean  "is_strategic",     default: false, null: false
-    t.integer  "status",           default: 1,     null: false
+    t.integer  "status",           default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20141012203400) do
     t.datetime "deadline"
     t.integer  "complexity",  default: 0, null: false
     t.integer  "score",       default: 0, null: false
-    t.integer  "status",      default: 1, null: false
+    t.integer  "status",      default: 0, null: false
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"

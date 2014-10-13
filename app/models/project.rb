@@ -1,8 +1,9 @@
 class Project < ActiveRecord::Base
 	
-	
+	has_many :tasks, dependent: :destroy
+
 	enum status: [:open, :close, :suspended, :transferred]
-	after_initialize :set_default_status, :if => :new_record?
+	#after_initialize :set_default_status, :if => :new_record?
 
 	validates :name, presence: true
 	validates :description, length: { maximum: 150 }
@@ -12,8 +13,8 @@ class Project < ActiveRecord::Base
 		estimated_budget.blank? || estimated_budget.zero?
 	end
 
-	def set_default_status
-    	self.status ||= :open
-  	end
+	# def set_default_status
+ #    	self.status ||= :open
+ #    end
 
 end
