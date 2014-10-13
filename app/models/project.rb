@@ -1,6 +1,9 @@
 class Project < ActiveRecord::Base
 	
 	has_many :tasks, dependent: :destroy
+	has_many :memberships, dependent: :destroy
+	has_many :users, through: :memberships
+	
 
 	enum status: [:open, :close, :suspended, :transferred]
 	#after_initialize :set_default_status, :if => :new_record?
