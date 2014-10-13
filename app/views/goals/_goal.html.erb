@@ -1,0 +1,6 @@
+<li id="goal-<%= goal.id %>">
+  <span class="content"><%= objetivo.nombre_objetivo %></span>
+	<span class="timestamp">
+		Publicado hace: <%= time_ago_in_words(goal.created_at) %> .
+	</span>
+</li>

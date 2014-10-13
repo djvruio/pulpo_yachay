@@ -1,0 +1,5 @@
+<h1>Organizaciones</h1>
+
+<%= nested_organizations @organizations.arrange(:order => :created_at) %>
+
+<%= render "form" %>
