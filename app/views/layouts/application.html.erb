@@ -16,10 +16,12 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3"> 
-          <p>izquierda</p>
+          <h3>Menu</h3>
+          <hr>
+           <%= render 'layouts/leftsidebar' %>
         </div><!--/col-sm-3 left-->
         <div class="col-sm-9">
-          <h3>Dashboard col-sm-9 centro izquierda</h3>
+          <h3>Dashboard</h3>
           <hr>
           <div class="row">
             <div class="col-md-7">
@@ -27,7 +29,7 @@
                <%= yield %>
             </div><!--/col-md-7 center-left-->
             <div class="col-md-5">
-              <p>col-md-5 para menus</p>
+              <%= render 'layouts/rigthside' %>
             </div><!--/col-md-5 center-rigth-->
           </div><!--/row inside col-sm-9-->
         </div><!--/col-sm-9 rigth-->

@@ -1,0 +1,16 @@
+<ul class="nav nav-stacked">
+	<% if user_signed_in? %>
+  <li><%= link_to 'All projects', projects_path %></li>
+  <li>My Projects</li>
+  <li><%= link_to 'New Project', new_project_path %></li>
+<% else %>
+  <li>Menu 1</li>
+  <li>Menu 2</li>
+<% end %>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <li>Menu 3</li>
+  <% end %>
+<% end %>
+
+</ul>
