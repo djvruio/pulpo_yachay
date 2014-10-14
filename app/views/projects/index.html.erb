@@ -1,7 +1,7 @@
 <%= link_to 'Create Project', new_project_path %>
-<ul>
+
 <% @projects.each do |project| %>
-<li>
+
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4><%= link_to(project.name, project_tasks_path(project)) %> <%= format_status(project) %></h4>
@@ -31,7 +31,7 @@
         </table>
     </div><!--/panel-body-->
   </div><!--/panel-->
-</li>
+
  <% end %>
-</ul>
+
 
