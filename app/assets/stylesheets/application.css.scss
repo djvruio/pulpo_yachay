@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+textarea 
+{ 
+	resize: vertical; 
+	min-height: 35px;
+	max-height: 300px;
+}

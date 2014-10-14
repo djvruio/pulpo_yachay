@@ -1,33 +1,37 @@
 
-<%= link_to 'Show tasks', project_tasks_path(@project) %>
+<%= link_to 'Show tasks', project_tasks_path(@project), :class => 'btn btn-primary btn-xs' %>
+<hr>
 
- 
-<p>
-  <strong>Description:</strong>
-  <%= @project.name %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+      <strong>Description:</strong>
+      <%= @project.name %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @project.description %>
+    </p>
 
-<p>
-  <strong>Estimated Budget:</strong>
-  <%= @project.estimated_budget %>
-</p>
+    <p>
+      <strong>Estimated Budget:</strong>
+      <%= @project.estimated_budget %>
+    </p>
 
-<p>
-  <strong>Is strategic:</strong>
-  <%= @project.is_strategic %>
-</p>
+    <p>
+      <strong>Is strategic:</strong>
+      <%= @project.is_strategic %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @project.status %>
-</p>
+    <p>
+      <strong>Status:</strong>
+      <%= @project.status %>
+    </p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %> |
-<%= link_to 'Create task', new_project_task_path(@project) %>
+<%= link_to 'Edit Project', edit_project_path(@project), :class => 'btn btn-primary btn-xs'  %>
+<%= link_to 'Back', projects_path, :class => 'btn btn-primary btn-xs' %>
+<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-primary btn-xs' %>
 
