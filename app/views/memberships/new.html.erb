@@ -1,0 +1,23 @@
+<header id="content-header">
+  <h4>New membership for <%= link_to @project.name, @project %></h4>
+</header>
+
+<%= form_for([@project, @membership]) do |f| %>
+  <%= render "shared/errors", object: @membership %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :responsible_role %>
+        <%= f.select :responsible_role, Membership::RESPONSIBLE_ROLE_OPTIONS, prompt: "Pick one" %>
+      </li>
+      <li class="required">
+        <p>Assigned to:</p>
+        <%= collection_select(:memberships, :user_id, User.all, :id, :email) %>
+      </li>
+    </ol>
+    <p>
+      <%= f.submit %> 
+      <%= link_to "Cancel", @project, class: 'button' %>
+    </p
+  </fieldset>
+<% end %>
