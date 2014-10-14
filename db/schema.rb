@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013205309) do
+ActiveRecord::Schema.define(version: 20141013215047) do
+
+  create_table "goals", force: true do |t|
+    t.string   "name"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "goals", ["organization_id"], name: "index_goals_on_organization_id"
 
   create_table "memberships", id: false, force: true do |t|
     t.integer  "project_id"
@@ -23,6 +32,15 @@ ActiveRecord::Schema.define(version: 20141013205309) do
 
   add_index "memberships", ["project_id"], name: "index_memberships_on_project_id"
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id"
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ancestry"
+  end
+
+  add_index "organizations", ["ancestry"], name: "index_organizations_on_ancestry"
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -43,7 +61,6 @@ ActiveRecord::Schema.define(version: 20141013205309) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
