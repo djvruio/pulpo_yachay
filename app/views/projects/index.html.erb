@@ -1,5 +1,12 @@
+<h4>Listing projects</h4>
 <%= link_to 'Create Project', new_project_path %>
 
+<<<<<<< HEAD
+=======
+<hr>
+
+<ul>
+>>>>>>> ecf6bd2bdf4c37eaa18817badf46ec686f1b3cae
 <% @projects.each do |project| %>
 
   <div class="panel panel-default">
@@ -10,22 +17,20 @@
     <div class="panel-body">
        <table>
           <tr>
-            <th>Description:</th>
             <td><%= project.description %></td>
           </tr>
           <tr>
             <th>Strategic:</th>
             <td><%= format_is_strategic(project) %></td>
-          </tr>
-          <tr>
-            <th>Estimated budget:</th>
+             <th>Estimated budget:</th>
             <td><%= format_budget(project) %></td>
           </tr>
           <tr>
-            <th></th>
             <td> 
               <%= link_to "Edit", edit_project_path(project) %> | 
-              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>|
+              <%= link_to 'All memberships', project_memberships_path(project) %>|
+              <%= link_to 'Create membership', new_project_membership_path(project) %>
             </td>
           </tr>
         </table>

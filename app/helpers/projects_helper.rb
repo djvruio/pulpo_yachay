@@ -20,11 +20,11 @@ module ProjectsHelper
 		when 'open'
   			content_tag(:span, 'open', :class => "badge pull-right alert-success")
 		when 'close'  
-  			content_tag(:strong, 'closed', :class => "badge pull-right alert-info")
+  			content_tag(:span, 'closed', :class => "badge pull-right alert-info")
 		when 'suspended'
-  			content_tag(:strong, 'suspended', :class => "badge pull-right")
+  			content_tag(:span, 'suspended', :class => "badge pull-right")
   		else
-  			content_tag(:strong, 'transferred', :class => "badge pull-right alert-warning")
+  			content_tag(:span, 'transferred', :class => "badge pull-right alert-warning")
 		end
 	end
 end
