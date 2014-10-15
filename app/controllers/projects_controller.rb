@@ -1,10 +1,22 @@
 class ProjectsController < ApplicationController
+	
 	before_filter :authenticate_user!
 	respond_to :html, :xml, :json
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 	
 	def index
-		@projects = Project.all
+		case params[:scope]
+		when 'open'
+			@projects = Project.open
+		when 'closed'
+			@projects = Project.closed
+		when 'suspended'
+			@projects = Project.suspended
+		when 'transferred'
+			@projects = Project.transferred
+		else
+			@projects = Project.all
+		end
 	end
 
 	def show
