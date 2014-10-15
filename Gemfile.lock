@@ -226,11 +226,11 @@ DEPENDENCIES
   jquery-rails
   launchy
   minitest
-  pg
+  pg (= 0.17.1)
   pry-rails
   quiet_assets
   rails (= 4.1.6)
-  rails_12factor
+  rails_12factor (= 0.0.2)
   rails_layout
   rspec-rails
   sass-rails (~> 4.0.3)
