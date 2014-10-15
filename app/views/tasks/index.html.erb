@@ -1,19 +1,35 @@
-<h4>Listing tasks for <%= link_to(@project.name, @project)%></h4>
+<h3>Listing tasks for <%= link_to(@project.name, @project)%></h3>
+<!--
 <%= link_to 'Create task', new_project_task_path(@project) %>
+-->
+<%= link_to 'Create task', new_project_task_path(@project), :class => 'btn btn-primary' %>
 <hr>
 <% @tasks.each do |task| %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <strong>Deadline:</strong> <%= time_tag(task.deadline) %>
-    <%= format_task_status(task) %> <%=format_task_complexity(task)%>
-  </div><!--/panel-heading--> 
-  <div class="panel-body">
-    <table>
-        <td><%= task.description %></td>
-      <tr>
-         <td><%= link_to "Edit task", edit_project_task_path(@project, task) %>|<%= link_to "Delete task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-      </tr>
-    </table>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <strong>Deadline:</strong> <%= time_tag(task.deadline) %>
+      <%= format_task_status(task) %><%=format_task_complexity(task)%>
+    </div><!--/panel-heading--> 
+    <div class="panel-body">
+      <table>
+          <td>
+            <%= task.description %>
+          </td>
+        <tr>
+          <td>
+            <br><br>
+            <div class="actions">
+              <%= link_to "Edit Task", edit_project_task_path(@project, task), :class => 'btn btn-primary btn-xs' %>
+
+              <%= link_to project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-primary btn-xs' do %>Delete Task<% end %>             
+            </div>            
+  <!--         
+             <%= link_to "Edit Task", edit_project_task_path(@project, task) %> | <%= link_to "Delete task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
+  -->           
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
-</div>
- <% end %>
+<% end %>

@@ -16,11 +16,13 @@ class TasksController < ApplicationController
   end
 
   def new
+    #binding.pry
     @task = @project.tasks.new
     #respond_with(@task)
   end
 
   def edit
+    #binding.pry
   end
 
   def create

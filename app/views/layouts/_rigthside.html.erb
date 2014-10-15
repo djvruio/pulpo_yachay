@@ -1,55 +1,50 @@
-   <ul class="nav nav-justified">
-    <li><a href="#"><i class="glyphicon glyphicon-cog"></i></a></li>
-    <li><a href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i><span class="count">3</span></a><ul class="dropdown-menu" role="menu"><li><a href="#">1. Is there a way..</a></li><li><a href="#">2. Hello, admin. I would..</a></li><li><a href="#"><strong>All messages</strong></a></li></ul></li>
-    <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>
-    <li><a title="Add Widget" data-toggle="modal" href="#addWidgetModal"><span class="glyphicon glyphicon-plus-sign"></span></a></li>
-  </ul>  
-  
-  <hr>
-  
-  <ul class="nav nav-stacked">
-    <% if user_signed_in? %>
+ <ul class="nav nav-justified">
+  <li><a href="#"><i class="glyphicon glyphicon-cog"></i></a></li>
+  <li><a href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i><span class="count">3</span></a><ul class="dropdown-menu" role="menu"><li><a href="#">1. Is there a way..</a></li><li><a href="#">2. Hello, admin. I would..</a></li><li><a href="#"><strong>All messages</strong></a></li></ul></li>
+  <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>
+  <li><a title="Add Widget" data-toggle="modal" href="#addWidgetModal"><span class="glyphicon glyphicon-plus-sign"></span></a></li>
+</ul>  
+
+<hr>
+
+<ul class="nav nav-stacked">
+  <% if user_signed_in? %>
     <li><%= link_to 'All projects', projects_path, class: 'button' %></li>
     <li><%= link_to 'Open projects', filtered_projects_path(:open), class: 'button' %></li>
     <li><%= link_to 'Closed projects', filtered_projects_path(:close), class: 'button' %></li>
     <li><%= link_to 'Suspended projects', filtered_projects_path(:suspended), class: 'button' %></li>
     <li><%= link_to 'Transferred projects', filtered_projects_path(:transferred), class: 'button' %></li>
-    <li>Strategic projects here</li>
-    <li>Not Strategic projects here</li>
-    <li>Suspended projects here</li>
-    <li>Closed projects here</li>
     <li><%= link_to 'New Project', new_project_path %></li>
-   
-    <% else %>
+  <% else %>
     <li>Menu 1</li>
     <li>Menu 2</li>
-    <% end %>
-    <% if user_signed_in? %>
+  <% end %>
+  <% if user_signed_in? %>
     <% if current_user.admin? %>
-    <li>Menu 3</li>
+      <li>Menu 3</li>
     <% end %>
-    <% end %>
+  <% end %>
 
-  </ul>
-  
-  <hr>
-  
-  <div class="btn-group btn-group-justified">
-    <a href="#" class="btn btn-info col-sm-3">
-      <i class="glyphicon glyphicon-plus"></i><br>
-      Service
-    </a>
-    <a href="#" class="btn btn-info col-sm-3">
-      <i class="glyphicon glyphicon-cloud"></i><br>
-      Cloud
-    </a>
-    <a href="#" class="btn btn-info col-sm-3">
-      <i class="glyphicon glyphicon-cog"></i><br>
-      Tools
-    </a>
-    <a href="#" class="btn btn-info col-sm-3">
-      <i class="glyphicon glyphicon-question-sign"></i><br>
-      Help
-    </a>
-  </div>
+</ul>
+
+<hr>
+
+<div class="btn-group btn-group-justified">
+  <a href="#" class="btn btn-info col-sm-3">
+    <i class="glyphicon glyphicon-plus"></i><br>
+    Service
+  </a>
+  <a href="#" class="btn btn-info col-sm-3">
+    <i class="glyphicon glyphicon-cloud"></i><br>
+    Cloud
+  </a>
+  <a href="#" class="btn btn-info col-sm-3">
+    <i class="glyphicon glyphicon-cog"></i><br>
+    Tools
+  </a>
+  <a href="#" class="btn btn-info col-sm-3">
+    <i class="glyphicon glyphicon-question-sign"></i><br>
+    Help
+  </a>
+</div>

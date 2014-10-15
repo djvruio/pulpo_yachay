@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  
-
   resources :goals
 
   resources :organizations
@@ -17,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :projects do
   	resources :memberships
+    resources :alignments
   	resources :tasks
   end
   
