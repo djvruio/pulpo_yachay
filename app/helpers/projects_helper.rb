@@ -26,7 +26,7 @@ module ProjectsHelper
 		when 'close'  
   			content_tag(:span, 'closed', :class => "label pull-right label-info")
 		when 'suspended'
-  			content_tag(:span, 'suspended', :class => "label pull-right")
+  			content_tag(:span, 'suspended', :class => "label pull-right label-default")
   		else
   			content_tag(:span, 'transferred', :class => "label pull-right label-warning")
 		end
