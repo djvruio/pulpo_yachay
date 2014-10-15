@@ -29,6 +29,6 @@ module ProjectsHelper
   			content_tag(:span, 'suspended', :class => "label pull-right label-default")
   		else
   			content_tag(:span, 'transferred', :class => "label pull-right label-warning")
-		end
+    end
 	end
 end
