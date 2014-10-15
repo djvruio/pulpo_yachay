@@ -19,7 +19,7 @@ module ProjectsHelper
 		case project.status
 		when 'open'
   			content_tag(:span, 'open', :class => "badge pull-right alert-success")
-		when 'close'  
+		when 'closed'  
   			content_tag(:span, 'closed', :class => "badge pull-right alert-info")
 		when 'suspended'
   			content_tag(:span, 'suspended', :class => "badge pull-right")

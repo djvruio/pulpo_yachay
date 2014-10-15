@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
 	has_many :memberships, dependent: :destroy
 	has_many :users, through: :memberships
 	
-	enum status: [:open, :close, :suspended, :transferred]
+	enum status: [:open, :closed, :suspended, :transferred]
 	
 	validates :name, presence: true
 	validates :description, length: { maximum: 150 }
