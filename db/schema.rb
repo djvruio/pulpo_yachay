@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013215047) do
+ActiveRecord::Schema.define(version: 20141015015005) do
+
+  create_table "alignments", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "goal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "alignments", ["goal_id"], name: "index_alignments_on_goal_id"
+  add_index "alignments", ["project_id"], name: "index_alignments_on_project_id"
 
   create_table "goals", force: true do |t|
     t.string   "name"
