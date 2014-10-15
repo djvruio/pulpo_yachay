@@ -19,3 +19,23 @@ textarea
 	min-height: 35px;
 	max-height: 300px;
 }
+
+.in-progress {
+	color: #FE9A2E;
+}
+
+.delayed {
+	color: #F70E0E;
+}
+
+.closed {
+	color: #017911;
+}
+
+.paused {
+	color: #898989;
+}
+
+.active {
+	color: #B8BB00;
+}

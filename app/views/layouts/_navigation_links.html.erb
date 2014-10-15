@@ -1,13 +1,34 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  <ul class="nav navbar-nav">
+    <li class="dropdown">
+      <a class="dropdown-toggle glyphicon glyphicon-home" role="button" data-toggle="dropdown" href="#" > Home<span class="caret"></span></a>
+      <ul id="g-account-menu" class="dropdown-menu" role="menu">
+        <li><%= link_to 'All Projects', projects_path %></li>
+        <li><%= link_to 'All Tasks' %></li>
+        <li class="divider"></li>
+        <li><%= link_to ' Logout', destroy_user_session_path, :method=>'delete', :class=>'glyphicon glyphicon-off'%></li>
+      </ul>
+    </li>
+  </ul>
+<!--  <a class="navbar-brand" href="#">Proyectos</a> -->
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+          Manage <span class="caret"></span>
+        </a>
+        <ul id="g-account-menu" class="dropdown-menu" role="menu">
+          <% if current_user.admin? %>
+            <li><%= link_to ' Users', users_path, :class=>'glyphicon glyphicon-user' %></li>
+            <li class="divider"></li>
+          <% end %>
+          <li><%= link_to 'Edit Account', edit_user_registration_path %></li>
+        </ul>
+      </li>
+    </ul>
 <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
-<% end %>
-<% if user_signed_in? %>
-  <% if current_user.admin? %>
-    <li><%= link_to 'Users', users_path %></li>
-  <% end %>
+  <ul class="nav navbar-nav">
+    <li><%= link_to 'Sign In', new_user_session_path %></li>
+    <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+  </ul>
 <% end %>

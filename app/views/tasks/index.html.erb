@@ -8,8 +8,11 @@
 
   <div class="panel panel-info">
     <div class="panel-heading">
+      <%=flag_task_deadline(task)%>
       <strong>Deadline:</strong> <%= time_tag(task.deadline) %>
       <%= format_task_status(task) %><%=format_task_complexity(task)%>
+
+
     </div><!--/panel-heading--> 
     <div class="panel-body">
       <table>
