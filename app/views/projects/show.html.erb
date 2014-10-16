@@ -1,11 +1,22 @@
 
+<!--
 <%= link_to 'Show tasks', project_tasks_path(@project), :class => 'btn btn-primary btn-xs' %>
-<hr>
 
+<%= link_to 'Edit Project', edit_project_path(@project), :class => 'btn btn-primary btn-xs'  %>
+<%= link_to 'Back', projects_path, :class => 'btn btn-primary btn-xs' %>
+<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-primary btn-xs' %>
+-->
+<%= link_to 'Back', projects_path, :class => 'btn btn-default btn-sm' %> | 
+<%= link_to 'Edit Project', edit_project_path(@project), :class => 'btn btn-default btn-sm'  %>
+<%= link_to 'Show tasks', project_tasks_path(@project), :class => 'btn btn-default btn-sm' %>
+<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-default btn-sm' %>
+
+<hr>
+<strong><h3>Project Details</h3></strong>
 <div class="panel panel-default">
   <div class="panel-body">
     <p>
-      <strong>Description:</strong>
+      <strong>Nombre:</strong>
       <%= @project.name %>
     </p>
 
@@ -31,7 +42,4 @@
   </div>
 </div>
 
-<%= link_to 'Edit Project', edit_project_path(@project), :class => 'btn btn-primary btn-xs'  %>
-<%= link_to 'Back', projects_path, :class => 'btn btn-primary btn-xs' %>
-<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-primary btn-xs' %>
 

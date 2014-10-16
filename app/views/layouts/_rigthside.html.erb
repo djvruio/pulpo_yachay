@@ -9,22 +9,26 @@
 <hr>
 
 <ul class="nav nav-stacked">
-  <% if user_signed_in? %>
-    <li><%= link_to 'All projects', projects_path, class: 'button' %></li>
-    <li><%= link_to 'Open projects', filtered_projects_path(:open), class: 'button' %></li>
-    <li><%= link_to 'Closed projects', filtered_projects_path(:closed), class: 'button' %></li>
-    <li><%= link_to 'Suspended projects', filtered_projects_path(:suspended), class: 'button' %></li>
-    <li><%= link_to 'Transferred projects', filtered_projects_path(:transferred), class: 'button' %></li>
-    <li><%= link_to 'New Project', new_project_path %></li>
-  <% else %>
-    <li>Menu 1</li>
-    <li>Menu 2</li>
-  <% end %>
-  <% if user_signed_in? %>
-    <% if current_user.admin? %>
-      <li>Menu 3</li>
+  <div class="panel panel-body">
+    <% if user_signed_in? %>
+      <li><%= link_to 'New Project', new_project_path %></li>
+      <hr>
+      <li><%= link_to 'All Projects', projects_path, class: 'button' %></li>
+      <li><%= link_to 'Open Projects', filtered_projects_path(:open), class: 'button' %></li>
+      <li><%= link_to 'Closed Projects', filtered_projects_path(:closed), class: 'button' %></li>
+      <li><%= link_to 'Suspended Projects', filtered_projects_path(:suspended), class: 'button' %></li>
+      <li><%= link_to 'Transferred Projects', filtered_projects_path(:transferred), class: 'button' %></li>
+    <% else %>
+      <li>Menu 1</li>
+      <li>Menu 2</li>
     <% end %>
-  <% end %>
+    <% if user_signed_in? %>
+      <hr>
+      <% if current_user.admin? %>
+        <li>Menu 3</li>
+      <% end %>
+    <% end %>
+  </div>
 
 </ul>
 

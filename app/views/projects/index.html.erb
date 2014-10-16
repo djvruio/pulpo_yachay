@@ -1,6 +1,6 @@
 <h4>Listing projects</h4>
 
-<%= link_to 'Create Project', new_project_path, :class => 'btn btn-primary' %>
+<%= link_to 'Create Project', new_project_path, :class => 'btn btn-default' %>
 
 <hr>
 <% @projects.each do |project| %>
@@ -33,12 +33,15 @@
         </tr>
       </table>
       <hr>
-      <%= link_to "Edit", edit_project_path(project), :class => 'btn btn-primary btn-xs' %>  
+<!--      <%= link_to "Edit", edit_project_path(project), :class => 'btn btn-primary btn-xs' %>  
       <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs' %> 
       <%= link_to 'All memberships', project_memberships_path(project), :class => 'btn btn-primary btn-xs' %> 
       <%= link_to 'Create membership', new_project_membership_path(project), :class => 'btn btn-primary btn-xs' %>
-
-
+-->
+      <%= link_to "Edit", edit_project_path(project) %> | 
+      <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+      <%= link_to 'All memberships', project_memberships_path(project) %> | 
+      <%= link_to 'Create membership', new_project_membership_path(project) %>
     </div><!--/panel-body-->
   </div><!--/panel-->
 

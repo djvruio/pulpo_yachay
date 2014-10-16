@@ -1,31 +1,32 @@
 <% provide(:title, @organization.name) %>
-<div class="row">
-  <aside class="col-md-4">
+  <div class="panel-body">
+    <div class="panel panel-default">
+      <div class="panel-body">
 
-    <section class="user_info">
       <h1>
         <%= @organization.name %>
       </h1>
-    </section>
 
-    <section>
+
       <h4>Sub-Organizations of <%= @organization.name %> </h4>
       <% @organization.children.each do |org| %>
-          <li><%= org.name_organization %></li>
+          <li><%= org.name %></li>
       <% end %>
-    </section>
 
-    <section>
-      <%= link_to "Crear Sub-Organización", new_organization_path(parent_id: @organization.id), remote: true %>
+      <hr>
+      <%= link_to "Create Sub-Organization", new_organization_path(parent_id: @organization.id), remote: true %>
       <div id="new_org">  <!-- La etiqueta esta en el new.js.erb declarada no borrar essta linea -->
       </div>
     </section>
 
-  </aside>
+
+</div>
+</div>
+</div>  
   <div class="col-md-8">
     <% if @organization.goals.any? %>
         <h3>Objetivos Estratégicos (<%= @organization.goals.count %>)</h3>
-        <%= link_to "Crear Objetivo", new_goal_path(organization_id: @organization.id) %>
+        <%= link_to "Create Goal", new_goal_path(organization_id: @organization.id) %>
         hola
         <ol class="goals">
           <%= render @goals %>
@@ -33,4 +34,4 @@
         <%= will_paginate @goals %>
     <% end %>
   </div>
-</div>
+

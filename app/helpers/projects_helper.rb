@@ -22,9 +22,9 @@ module ProjectsHelper
 	def format_status(project)
 		case project.status
 		when 'open'
-  			content_tag(:span, 'open', :class => "label pull-right label-success")
-		when 'close'  
-  			content_tag(:span, 'closed', :class => "label pull-right label-info")
+  			content_tag(:span, 'open', :class => "label pull-right label-progress")
+		when 'closed'  
+  			content_tag(:span, 'closed', :class => "label pull-right label-success")
 		when 'suspended'
   			content_tag(:span, 'suspended', :class => "label pull-right label-default")
   		else

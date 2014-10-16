@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$('.dropdown-submenu > a').click(function(){
+    $(this).parent().children('.dropdown-menu').toggleClass('shown');
+});

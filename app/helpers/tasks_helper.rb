@@ -5,7 +5,7 @@ module TasksHelper
 		when 'open'
   			content_tag(:span, 'open', :class => "label pull-right label-warning")
 		when 'close'  
-  			content_tag(:span, 'close', :class => "label pull-right label-info")
+  			content_tag(:span, 'close', :class => "label pull-right label-success")
 		when 'delayed'
   			content_tag(:span, 'delayed', :class => "label pull-right label-danger")
   		else
@@ -34,6 +34,17 @@ module TasksHelper
 		else
 			content_tag(:span, '', :class => "glyphicon glyphicon-flag delayed")
 		end
+	end
+
+	def is_new_task(action)
+		case action
+		when 'new'
+			value=true
+		when 'edit'
+			value=false
+		end 
+		#binding.pry
+		return value
 	end
 	
 end

@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   def index
     #fail
     #binding.pry
-    @tasks = @project.tasks
+    @tasks = @project.tasks.reverse_order
     respond_with(@tasks)
   end
 

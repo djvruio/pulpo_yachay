@@ -25,18 +25,44 @@
                 <%= f.select :complexity, Task.complexities.keys.map {|complexity| [complexity.titleize, complexity]}%>
               </center>
             </td>
-            <td width="150">
-              <center>
-                <%= f.label :status %><br>
-                <%= f.select :status, Task.statuses.keys.map {|status| [status.titleize, status]}%>
-              </center>
-            </td>
-            <td width="100">
-              <center>
-                <%= f.label :score %><br>
-                <%= f.select :score, Task.scores.keys.map {|score| [score.titleize, score]}%>
-              </center>
-            </td>
+
+            <% if current_user.admin? %>
+
+              <td width="150">
+                <center>
+                  <%= f.label :status %><br>
+                  <%= f.select :status, Task.statuses.keys.map {|status| [status.titleize, status]}%>
+                </center>
+              </td>
+              <td width="100">
+                <center>
+                  <%= f.label :score %><br>
+                  <%= f.select :score, Task.scores.keys.map {|score| [score.titleize, score]}%>
+                </center>
+              </td>
+
+            <% else %>
+              <% if is_new_task(params[:action]) %>
+
+                <td width="150">
+                  <center>
+                    <%= f.label :status %><br>
+                    <%= f.select :status, Task.statuses.keys.map {|status| [status.titleize, status]}, {}, {:disabled=>true} %>
+                  </center>
+                </td>
+
+              <% else %>
+
+                <td width="150">
+                  <center>
+                    <%= f.label :status %><br>
+                    <%= f.select :status, Task.statuses.keys.map {|status| [status.titleize, status]}%>
+                  </center>
+                </td>
+
+              <% end %>
+            <% end %>
+
           </table>
         </div>
 
@@ -49,6 +75,7 @@
     
     <div class="actions">
 <!--      <%= f.submit class: 'btn btn-primary' %> -->
+<!--
       <%= button_tag(type: 'submit', class: "btn btn-primary btn-xs") do %>
         <%  if params[:action] == 'new' %>
           Create Task
@@ -56,7 +83,17 @@
           Update Task
         <% end %>
       <% end %>    
-      <%= link_to :back, :class => 'btn btn-primary btn-xs' do %>Cancel<% end %>             
+      <%= link_to :back, :class => 'btn btn-primary btn-xs' do %>Cancel<% end %>    
+-->             
+
+    <%= button_tag(type: 'submit', class: "btn btn-default btn-sm") do %>
+        <%  if params[:action] == 'new' %>
+          Create Task
+        <% else %>
+          Update Task
+        <% end %>
+      <% end %>    
+      <%= link_to :back, :class => 'btn btn-default btn-sm' do %>Cancel<% end %>   
     </div> 
   </div>     
 <% end %>
