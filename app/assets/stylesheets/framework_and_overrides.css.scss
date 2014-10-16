@@ -80,3 +80,11 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+.nested_organizations{
+  margin-left: 40px;
+}
+
+
+.nested_organizations .nested_organizations .nested_organizations .nested_organizations {
+  margin-left: 0px;
+}
