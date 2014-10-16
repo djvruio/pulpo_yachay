@@ -20,7 +20,9 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		respond_with(@project)
+		@goals = @project.goals
+		respond_with(@project, @goals)
+		#@goals = @project.goals
 	end
 
 	def new
@@ -55,6 +57,6 @@ class ProjectsController < ApplicationController
 	    end
 
 	    def project_params
-	      params.require(:project).permit(:name, :description, :estimated_budget, :is_strategic, :status)
+	      params.require(:project).permit(:name, :description, :estimated_budget, :is_strategic, :status, :goal_ids=>[])
 	    end
 end

@@ -1,5 +1,5 @@
 
-<%= form_for @project do |f| %>
+<%= form_for(@project) do |f| %>
 
   <%= render "shared/errors", object: @project %>
 
@@ -48,6 +48,14 @@
             </center>
           </td>
         </table>
+       
+        <hr>
+        <h4>Strategic goals </h4>
+        <hr>
+        <li><%= f.collection_check_boxes(:goal_ids, Goal.all, :id, :name) do |b|
+              b.label(:"data-value" => b.value) { b.check_box + truncate(b.text, length: 60, separator: ' ') }
+              end %>
+        </li>
       </div>
     </div>
 

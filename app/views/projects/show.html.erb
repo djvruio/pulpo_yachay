@@ -3,35 +3,38 @@
 <hr>
 
 <div class="panel panel-default">
-  <div class="panel-body">
-    <p>
-      <strong>Description:</strong>
-      <%= @project.name %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= @project.description %>
-    </p>
-
-    <p>
-      <strong>Estimated Budget:</strong>
-      <%= @project.estimated_budget %>
-    </p>
-
-    <p>
-      <strong>Is strategic:</strong>
-      <%= @project.is_strategic %>
-    </p>
-
-    <p>
-      <strong>Status:</strong>
-      <%= @project.status %>
-    </p>
-  </div>
-</div>
+    <div class="panel-heading">
+      <h4><b><%= @project.name %></b></h4>    
+    </div><!--/panel-heading--> 
+    <div class="panel-body">
+       <table>
+        <tr>
+          <td width="400">
+            Description:
+            <%= format_description(@project) %>
+          </td>
+        </tr>
+        <tr>
+          <td>Estimated budget:</td>
+          <td> <%= format_budget(@project) %></td>
+        <tr>
+           <td>Strategic:</td>
+          <td> <%= format_is_strategic(@project) %></td>
+        </tr>      
+          <td>Status:</td>
+          <td> <%= format_status(@project) %></td>
+        </tr>
+      </table>
+      <hr>
+       <h4><b>Strategic Goals for project <%= @project.name %></b></h4>    
+      <ul>
+        <% @goals.each do |goal| %>
+          <li><%= goal.name %></li>
+        <% end %>
+      </ul>
+    </div><!--/panel-body-->
+  </div><!--/panel-->
 
 <%= link_to 'Edit Project', edit_project_path(@project), :class => 'btn btn-primary btn-xs'  %>
 <%= link_to 'Back', projects_path, :class => 'btn btn-primary btn-xs' %>
 <%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-primary btn-xs' %>
-
