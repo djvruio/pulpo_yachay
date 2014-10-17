@@ -19,16 +19,21 @@ module ProjectsHelper
 		end
 	end
 
-	def format_status(project)
+	def format_status(project,align)
+		if align===''
+			opc_align=align
+		else
+			opc_align='pull-'+align
+		end
 		case project.status
 		when 'open'
-  			content_tag(:span, 'open', :class => "label pull-right label-progress")
+  			content_tag(:span, 'open', :class => "label #{opc_align} label-progress")
 		when 'closed'  
-  			content_tag(:span, 'closed', :class => "label pull-right label-success")
+  			content_tag(:span, 'closed', :class => "label #{opc_align} label-success")
 		when 'suspended'
-  			content_tag(:span, 'suspended', :class => "label pull-right label-default")
+  			content_tag(:span, 'suspended', :class => "label #{opc_align} label-default")
   		else
-  			content_tag(:span, 'transferred', :class => "label pull-right label-warning")
+  			content_tag(:span, 'transferred', :class => "label #{opc_align} label-warning")
     end
 	end
 end

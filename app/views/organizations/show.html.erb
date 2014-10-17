@@ -1,12 +1,13 @@
+<%= link_to 'Back', :back, :class => 'btn btn-default btn-sm' %>
+<hr>
 <% provide(:title, @organization.name) %>
-  <div class="panel-body">
+  
     <div class="panel panel-default">
       <div class="panel-body">
 
       <h1>
         <%= @organization.name %>
       </h1>
-
 
       <h4>Sub-Organizations of <%= @organization.name %> </h4>
       <% @organization.children.each do |org| %>
@@ -33,5 +34,3 @@
         </ol>
         <%= will_paginate @goals %>
     <% end %>
-  </div>
-

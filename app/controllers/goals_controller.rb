@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   def create
-    #binding.pry
+    binding.pry
     @goal = current_user.goals.build(goals_params)
     if @goal.save
       flash[:success] = "Objetivo creado!"
@@ -11,7 +11,7 @@ class GoalsController < ApplicationController
   end
 
   def index
-
+    @goals_index=Goal.all
   end
 
   def new

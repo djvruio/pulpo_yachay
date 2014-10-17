@@ -1,13 +1,13 @@
-<h4>Listing projects</h4>
-
 <%= link_to 'Create Project', new_project_path, :class => 'btn btn-default' %>
+<hr>
+<h3>Listing Projects</h3>
 
 <hr>
 <% @projects.each do |project| %>
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4><b><%= link_to(project.name, project_tasks_path(project)) %> <%= format_status(project) %></b></h4>
+      <h4><b><%= link_to(project.name, project_tasks_path(project)) %> <%= format_status(project,'right') %></b></h4>
       <div class="progress">
         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">50%
         </div>

@@ -1,1 +1,26 @@
-Goals still not created
+<%= link_to("Create Strategic Goal", new_goal_path, :class => 'btn btn-default btn-xs') %>
+
+<hr>
+<h3>Listing Strategic Goals</h3>
+<hr>
+
+<% @goals_index.each do |goal| %>
+
+  <div class="panel panel-info">
+    <div class="panel-body">
+      <table>
+	      <td width="300">
+	      	<strong>Name:</strong> <%= goal.name %>
+	      </td>
+        <tr>
+          <td>
+            <hr>
+            <div class="actions">
+            </div>            
+  
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+<% end %>

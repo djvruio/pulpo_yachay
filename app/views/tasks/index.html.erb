@@ -1,14 +1,14 @@
-<h3>Listing tasks for <%= link_to(@project.name, @project)%></h3>
-<hr>
 <!--
 <%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-primary' %>
 <%= link_to "Back", projects_path, :class => 'btn btn-primary' %> | 
 <%= link_to "Edit Project", edit_project_path(@project), :class => 'btn btn-primary' %> 
 -->
 <%= link_to "Back", projects_path, :class => 'btn btn-default' %> | 
-<%= link_to "Edit Project", edit_project_path(@project), :class => 'btn btn-default' %> 
+<%= link_to "Details Project", project_path(@project), :class => 'btn btn-default' %> 
 <%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-default' %>
 
+<hr>
+<h3>Listing tasks for <%= link_to(@project.name, @project)%></h3>
 <hr>
 <% @tasks.each do |task| %>
 
