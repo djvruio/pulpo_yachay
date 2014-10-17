@@ -1,4 +1,4 @@
-<%= link_to("Create Strategic Goal", new_goal_path, :class => 'btn btn-default btn-xs') %>
+<%= link_to("Create Strategic Goal", new_goal_path, :class => 'btn btn-default btn-sm') %>
 
 <hr>
 <h3>Listing Strategic Goals</h3>
@@ -8,19 +8,7 @@
 
   <div class="panel panel-info">
     <div class="panel-body">
-      <table>
-	      <td width="300">
-	      	<strong>Name:</strong> <%= goal.name %>
-	      </td>
-        <tr>
-          <td>
-            <hr>
-            <div class="actions">
-            </div>            
-  
-          </td>
-        </tr>
-      </table>
+    	<strong>Name:</strong> <%= goal.name %>
     </div>
   </div>
 <% end %>
