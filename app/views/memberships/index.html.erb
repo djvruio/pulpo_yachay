@@ -5,15 +5,20 @@
 <ol id="registrations">
   <% @memberships.each do |membership| %>
     <li>
-    
-      <span class="date">
-        <%= time_ago_in_words(membership.created_at) %> ago
+      <span class="how-heard">
+        (<%= membership.user.name %>)    
+      </span>
+      <span class="how-heard">
+        (<%= membership.user.email %>)    
       </span>
       <span class="how-heard">
         (<%= membership.responsible_role %>)    
       </span>
-      <span class="how-heard">
-        (<%= membership.user_id%>)    
+       <span class="date">
+        <%= time_ago_in_words(membership.created_at) %> ago
+      </span>
+       <span class="how-heard">
+        (<%= membership.user.name %>)    
       </span>
     </li>
   <% end %>

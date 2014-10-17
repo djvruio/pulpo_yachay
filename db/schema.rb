@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141015015005) do
   add_index "goals", ["organization_id", "created_at"], name: "index_goals_on_organization_id_and_created_at"
   add_index "goals", ["organization_id"], name: "index_goals_on_organization_id"
 
-  create_table "memberships", id: false, force: true do |t|
+  create_table "memberships", force: true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
     t.string   "responsible_role"
