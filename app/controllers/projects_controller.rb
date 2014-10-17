@@ -5,22 +5,50 @@ class ProjectsController < ApplicationController
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 	
 	def index
-		case params[:scope]
-		when 'open'
-			@projects = Project.open
-		when 'closed'
-			@projects = Project.closed
-		when 'suspended'
-			@projects = Project.suspended
-		when 'transferred'
-			@projects = Project.transferred
-		else
-			@projects = Project.all
-		end
+
+    #if current_user.admin?
+      case params[:scope]
+        when 'open'
+          @projects = Project.open
+        when 'closed'
+          @projects = Project.closed
+        when 'suspended'
+          @projects = Project.suspended
+        when 'transferred'
+          @projects = Project.transferred
+        when 'open_is_strategic'
+          @projects = Project.open.where('is_strategic = ?',true)
+        when 'open_is_not_strategic'
+          @projects = Project.open.where('is_strategic = ?',false)
+        when 'closed_is_strategic'
+          @projects = Project.closed.where('is_strategic = ?',true)
+        when 'closed_is_not_strategic'
+          @projects = Project.closed.where('is_strategic = ?',false)
+        else
+          @projects = Project.all
+      end
+
+    #end
+    #if current_user.user?
+      #Aqui toca cruzar los proyectos con la tabla memberships para que
+      #me aparezca solo los proyectos asignados en membership
+      #para el caso de proyectos del administrador no hace falta ya que tiene acceso total
+      #@projects = current_user.memberships(project_params[:id])
+    #  @projects = current_user.projects
+    #  if @projects.count == 1
+    #    redirecting = 1
+    #    redirect_to project_path(@projects.first)
+    #  end
+    #end
 	end
 
 	def show
-		@goals = @project.goals
+    @openS = Project.open.where('is_strategic = ?',true)
+    @openNS = Project.open.where('is_strategic = ?',false)
+    @ClosedS = Project.closed.where('is_strategic = ?',true)
+    @ClosedNS = Project.closed.where('is_strategic = ?',false)
+
+    @goals = @project.goals
 		respond_with(@project, @goals)
 		#@goals = @project.goals
 	end
