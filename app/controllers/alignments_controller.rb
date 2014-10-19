@@ -22,9 +22,10 @@ class AlignmentsController < ApplicationController
     @goal = Goal.find(params[:alignments][:goal_id])
     @alignment = @project.alignments.new(alignment_params)
     @alignment.goal = @goal
+    #@membership.user = @user
     if @alignment.save
       redirect_to project_alignments_path(@project),
-                  notice: "Goal assigned successfully!"
+                  notice: "Objetivo assigned successfully!"
     else
       render :new
     end
@@ -38,6 +39,6 @@ class AlignmentsController < ApplicationController
     end
 
     def alignment_params
-      params.require(:alignment).permit(:project_id, :goal_id)
+      params.require(:alignment).permit(:goal_id,:project_id )
     end
 end

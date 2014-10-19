@@ -1,5 +1,6 @@
+
 <header id="content-header">
-  <h4>New alignment for <%= link_to @project.name, @project %></h4>
+  <h4>New aligment for <%= link_to @project.name, @project %></h4>
 </header>
 
 <%= form_for([@project, @alignment]) do |f| %>
@@ -7,8 +8,8 @@
     <fieldset>
       <ol>
         <li class="required">
-          <p>Aligned to:</p>
-          <%= collection_select(:alignments, :goal_id, Goal.all, :id, :name) %>
+          <p>Assigned to:</p>
+          <%= collection_select(:@alignments, :goal_id,Goal.all, :id, :name) %>
         </li>
       </ol>
       <p>
