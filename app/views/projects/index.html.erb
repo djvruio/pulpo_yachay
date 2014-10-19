@@ -47,3 +47,23 @@
   </div><!--/panel-->
 
  <% end %>
+
+
+<hr>
+<h2>Chartkick Examples</h2>
+
+ <div class="row">
+
+   <div class="col-md-9">
+    <%= column_chart @projects.group(:status).count , {library: {title: "Total projects by status - colum chart"}} %>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+    <%= pie_chart @projects.group(:is_strategic).count, {library: {title: "Total strategic projects - pie chart"}} %>
+  </div>
+
+  
+</div>

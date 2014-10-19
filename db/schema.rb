@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141015015005) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "alignments", force: true do |t|
     t.integer  "project_id"
     t.integer  "goal_id"
@@ -20,8 +23,8 @@ ActiveRecord::Schema.define(version: 20141015015005) do
     t.datetime "updated_at"
   end
 
-  add_index "alignments", ["goal_id"], name: "index_alignments_on_goal_id"
-  add_index "alignments", ["project_id"], name: "index_alignments_on_project_id"
+  add_index "alignments", ["goal_id"], name: "index_alignments_on_goal_id", using: :btree
+  add_index "alignments", ["project_id"], name: "index_alignments_on_project_id", using: :btree
 
   create_table "goals", force: true do |t|
     t.string   "name"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 20141015015005) do
     t.datetime "updated_at"
   end
 
-  add_index "goals", ["organization_id", "created_at"], name: "index_goals_on_organization_id_and_created_at"
-  add_index "goals", ["organization_id"], name: "index_goals_on_organization_id"
+  add_index "goals", ["organization_id", "created_at"], name: "index_goals_on_organization_id_and_created_at", using: :btree
+  add_index "goals", ["organization_id"], name: "index_goals_on_organization_id", using: :btree
 
   create_table "memberships", force: true do |t|
     t.integer  "project_id"
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 20141015015005) do
     t.datetime "updated_at"
   end
 
-  add_index "memberships", ["project_id"], name: "index_memberships_on_project_id"
-  add_index "memberships", ["user_id"], name: "index_memberships_on_user_id"
+  add_index "memberships", ["project_id"], name: "index_memberships_on_project_id", using: :btree
+  add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "organizations", force: true do |t|
     t.string   "name"
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141015015005) do
     t.string   "ancestry"
   end
 
-  add_index "organizations", ["ancestry"], name: "index_organizations_on_ancestry"
+  add_index "organizations", ["ancestry"], name: "index_organizations_on_ancestry", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -75,7 +78,7 @@ ActiveRecord::Schema.define(version: 20141015015005) do
     t.integer  "user_id"
   end
 
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -94,7 +97,7 @@ ActiveRecord::Schema.define(version: 20141015015005) do
     t.integer  "role"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
