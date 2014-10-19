@@ -27,6 +27,7 @@ class TasksController < ApplicationController
 
   def create
     @task = @project.tasks.new(task_params)
+    @task.user_id = current_user
     if @task.save
       redirect_to project_tasks_path(@project), notice:'Task was successfully created.'
     else
@@ -56,7 +57,7 @@ class TasksController < ApplicationController
      end
 
     def task_params
-      params.require(:task).permit(:description, :deadline, :complexity, :score, :status, :project_id)
+      params.require(:task).permit(:description, :deadline, :complexity, :score, :status, :project_id,:assigned_to_id)
     end
 
     def set_project

@@ -41,6 +41,14 @@
                 </center>
               </td>
 
+              <td width="100">
+                  <center>
+                    <%= f.label "Assigned to" %><br>
+                    <%= collection_select(:task, :assigned_to_id, User.all, :id, :email) %>
+                  </center>
+              </td>
+
+
             <% else %>
               <% if is_new_task(params[:action]) %>
 
@@ -50,6 +58,13 @@
                     <%= f.select :status, Task.statuses.keys.map {|status| [status.titleize, status]}, {}, {:disabled=>true} %>
                   </center>
                 </td>
+
+                    <td width="100">
+                      <center>
+                        <%= f.label "Assigned to" %><br>
+                        <%= collection_select(:task, :assigned_to_id, User.all, :id, :email) %>
+                      </center>
+                    </td>
 
               <% else %>
 

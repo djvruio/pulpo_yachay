@@ -21,6 +21,9 @@
       <td width="300">
       <strong>Deadline:</strong> <%= time_tag(task.deadline) %>
       </td>
+      <td width="50">
+        <strong>Asignada a: </strong> <%= task.assigned.try(:email) %>
+      </td>
       <td width="130" align="right">
       <strong>Complexity: </strong> <%=format_task_complexity(task)%>
       </td>
