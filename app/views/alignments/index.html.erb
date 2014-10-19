@@ -6,13 +6,12 @@
 <ol id="registrations">
   <% @alignments.each do |alignment| %>
       <li>
-
-      <span class="date">
-        <%= time_ago_in_words(alignment.created_at) %> ago
-      </span>
-      <span class="how-heard">
-        (<%= alignment.goal_id %>)
-      </span>
+          <span class="date">
+            <%= time_ago_in_words(alignment.created_at) %> ago
+          </span>
+          <span class="how-heard">
+            (<%= alignment.goal_id %>)
+          </span>
       </li>
   <% end %>
 </ol>

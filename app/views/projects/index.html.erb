@@ -38,11 +38,13 @@
       <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs' %> 
       <%= link_to 'All memberships', project_memberships_path(project), :class => 'btn btn-primary btn-xs' %> 
       <%= link_to 'Create membership', new_project_membership_path(project), :class => 'btn btn-primary btn-xs' %>
+
 -->
       <%= link_to "Edit", edit_project_path(project) %> | 
       <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %> | 
       <%= link_to 'All memberships', project_memberships_path(project) %> | 
-      <%= link_to 'Create membership', new_project_membership_path(project) %>
+      <%= link_to 'Create membership', new_project_membership_path(project) %>|
+
     </div><!--/panel-body-->
   </div><!--/panel-->
 

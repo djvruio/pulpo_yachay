@@ -12,7 +12,7 @@ class MembershipsController < ApplicationController
 	end
 
 	def create
-		
+
 		#binding.pry
 		@user = User.find(params[:memberships][:user_id])
 		@membership = @project.memberships.new(membership_params)
@@ -27,12 +27,14 @@ class MembershipsController < ApplicationController
 
 	private
 
+
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
 	def membership_params
 		params.require(:membership).permit(:responsible_role, :user_id, :project_id)
 	end
 
-	def set_project
-		@project = Project.find(params[:project_id])
-	end
 
 end
