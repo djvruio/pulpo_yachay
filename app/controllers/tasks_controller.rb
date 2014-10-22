@@ -5,6 +5,13 @@ class TasksController < ApplicationController
   before_action :set_project
 
   def index
+
+    if current_user.admin?
+
+    end
+    if current_user.user?
+
+    end
     #fail
     #binding.pry
     @tasks = @project.tasks.reverse_order

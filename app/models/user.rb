@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   has_many :projects, through: :memberships
   #has_many :tasks, dependent: :destroy
 
-  enum role: [:user, :admin]
+  enum role: [:user, :admin, :vip]
 
-  #rol     0     1
+  #rol     0     1     2
   #after_initialize :set_default_role, :if => :new_record?
   after_create :check_if_admin_needs_to_be_made
 
