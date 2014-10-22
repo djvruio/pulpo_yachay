@@ -18,12 +18,10 @@
       <%= link_to "Create Sub-Organization", new_organization_path(parent_id: @organization.id), remote: true %>
       <div id="new_org">  <!-- La etiqueta esta en el new.js.erb declarada no borrar essta linea -->
       </div>
-    </section>
+        </section>
+      </div>
+    </div>
 
-
-</div>
-</div>
-</div>  
   <div class="col-md-8">
     <% if @organization.goals.any? %>
         <h3>Objetivos Estratégicos (<%= @organization.goals.count %>)</h3>
@@ -34,3 +32,4 @@
         </ol>
         <%= will_paginate @goals %>
     <% end %>
+  </div>

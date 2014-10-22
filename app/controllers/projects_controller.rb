@@ -5,8 +5,7 @@ class ProjectsController < ApplicationController
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 	
 	def index
-
-    #if current_user.admin?
+    if current_user.admin?
       case params[:scope]
         when 'open'
           @projects = Project.open
@@ -27,19 +26,29 @@ class ProjectsController < ApplicationController
         else
           @projects = Project.all
       end
-
-    #end
-    #if current_user.user?
-      #Aqui toca cruzar los proyectos con la tabla memberships para que
-      #me aparezca solo los proyectos asignados en membership
-      #para el caso de proyectos del administrador no hace falta ya que tiene acceso total
-      #@projects = current_user.memberships(project_params[:id])
-    #  @projects = current_user.projects
-    #  if @projects.count == 1
-    #    redirecting = 1
-    #    redirect_to project_path(@projects.first)
-    #  end
-    #end
+    end
+    if current_user.user?
+      case params[:scope]
+        when 'open'
+          @projects = current_user.projects.open
+        when 'closed'
+          @projects = current_user.projects.closed
+        when 'suspended'
+          @projects = current_user.projects.suspended
+        when 'transferred'
+          @projects = current_user.projects.transferred
+        when 'open_is_strategic'
+          @projects = current_user.projects.open.where('is_strategic = ?',true)
+        when 'open_is_not_strategic'
+          @projects = current_user.projects.open.where('is_strategic = ?',false)
+        when 'closed_is_strategic'
+          @projects = current_user.projects.closed.where('is_strategic = ?',true)
+        when 'closed_is_not_strategic'
+          @projects = current_user.projects.closed.where('is_strategic = ?',false)
+        else
+          @projects = current_user.projects.all
+      end
+    end
 	end
 
 	def show
