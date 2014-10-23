@@ -23,6 +23,14 @@ class ProjectsController < ApplicationController
           @projects = Project.closed.where('is_strategic = ?',true)
         when 'closed_is_not_strategic'
           @projects = Project.closed.where('is_strategic = ?',false)
+        when 'open_is_critic'
+          @projects = Project.open.where('is_critic = ?',true)
+        when 'open_is_not_critic'
+          @projects = Project.open.where('is_critic = ?',false)
+        when 'closed_is_critic'
+          @projects = Project.closed.where('is_critic = ?',true)
+        when 'closed_is_not_critic'
+          @projects = Project.closed.where('is_critic = ?',false)
         else
           @projects = Project.all
       end
@@ -45,6 +53,14 @@ class ProjectsController < ApplicationController
           @projects = current_user.projects.closed.where('is_strategic = ?',true)
         when 'closed_is_not_strategic'
           @projects = current_user.projects.closed.where('is_strategic = ?',false)
+        when 'open_is_critic'
+          @projects = current_user.projects.open.where('is_critic = ?',true)
+        when 'open_is_not_critic'
+          @projects = current_user.projects.open.where('is_critic = ?',false)
+        when 'closed_is_critic'
+          @projects = current_user.projects.closed.where('is_critic = ?',true)
+        when 'closed_is_not_critic'
+          @projects = current_user.projects.closed.where('is_critic = ?',false)
         else
           @projects = current_user.projects.all
       end
@@ -94,6 +110,6 @@ class ProjectsController < ApplicationController
 	    end
 
 	    def project_params
-	      params.require(:project).permit(:name, :description, :estimated_budget, :is_strategic, :status, :goal_ids=>[])
+	      params.require(:project).permit(:name, :description, :estimated_budget, :is_strategic, :status,:is_critic, :goal_ids=>[])
 	    end
 end

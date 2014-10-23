@@ -15,6 +15,11 @@
             <li><%= link_to 'Open Not Strategic Projects', filtered_projects_path(:open_is_not_strategic), class: 'button' %></li>
             <li><%= link_to 'Closed Not Strategic Projects', filtered_projects_path(:closed_is_not_strategic), class: 'button' %></li>
 
+            <li><%= link_to 'Open Critic Projects', filtered_projects_path(:open_is_critic), class: 'button'   %></li>
+            <li><%= link_to 'Closed Critic Projects', filtered_projects_path(:closed_is_critic), class: 'button' %></li>
+            <li><%= link_to 'Open Not Critic Projects', filtered_projects_path(:open_is_not_critic), class: 'button' %></li>
+            <li><%= link_to 'Closed Not Critic Projects', filtered_projects_path(:closed_is_not_critic), class: 'button' %></li>
+
 			<li><%= link_to 'New Project', new_project_path %></li>
 		<% else %>
 			<li>Menu 1</li>
