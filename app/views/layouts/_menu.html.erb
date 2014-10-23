@@ -3,14 +3,12 @@
 	<hr>
 	<ul class="nav nav-stacked">
 		<% if user_signed_in? %>
-			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> All Projects'.html_safe, projects_path %></li>
-			<li><%= link_to '<i class="glyphicon glyphicon-check"></i> All Tasks'.html_safe %></li>
-		    <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
-		    <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alerts</a></li>
+			<li><%= link_to t('All Projects').html_safe, projects_path %></li>
+			<li><%= link_to t('All Tasks').html_safe %></li>
+            <li><%= link_to t('Reports').html_safe %></li>
+            <li><%= link_to t('Alerts').html_safe %></li>
 
-<!--		    <li><h1><i class="glyphicon glyphicon-flag in-progress"></i></h1></li> -->
-
-            <li><%= link_to 'Open Strategic Projects', filtered_projects_path(:open_is_strategic), class: 'button'   %></li>
+            <li><%= link_to t('Open Strategic Projects'), filtered_projects_path(:open_is_strategic), class: 'button'   %></li>
             <li><%= link_to 'Closed Strategic Projects', filtered_projects_path(:closed_is_strategic), class: 'button' %></li>
             <li><%= link_to 'Open Not Strategic Projects', filtered_projects_path(:open_is_not_strategic), class: 'button' %></li>
             <li><%= link_to 'Closed Not Strategic Projects', filtered_projects_path(:closed_is_not_strategic), class: 'button' %></li>

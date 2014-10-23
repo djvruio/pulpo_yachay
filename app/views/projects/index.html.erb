@@ -1,6 +1,6 @@
-<%= link_to 'Create Project', new_project_path, :class => 'btn btn-default' %>
+<%= link_to t('Create Project'), new_project_path, :class => 'btn btn-default' %>
 <hr>
-<h3>Listing Projects</h3>
+<h3> <%= t('Listing Projects') %> </h3>
 
 <hr>
 <% @projects.each do |project| %>
