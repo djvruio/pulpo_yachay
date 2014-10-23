@@ -3,9 +3,9 @@
 	<hr>
 	<ul class="nav nav-stacked">
 		<% if user_signed_in? %>
+			<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reports'.html_safe, list_statistics_path %></li>
 			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> All Projects'.html_safe, projects_path %></li>
 			<li><%= link_to '<i class="glyphicon glyphicon-check"></i> All Tasks'.html_safe %></li>
-		    <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
 		    <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alerts</a></li>
 
 <!--		    <li><h1><i class="glyphicon glyphicon-flag in-progress"></i></h1></li> -->

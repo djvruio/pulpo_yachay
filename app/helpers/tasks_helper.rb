@@ -15,12 +15,16 @@ module TasksHelper
 
 	def format_task_complexity(task)
 		case task.complexity
-		when 'low'
-  			content_tag(:span, 'low', :class => "label pull-right label-success") 
+		when 'easier'
+  			content_tag(:span, 'easier', :class => "label pull-right label-success") 
+		when 'easy'
+  			content_tag(:span, 'easy', :class => "label pull-right label-success") 
 		when 'medium'  
   			content_tag(:span, 'medium', :class => "label pull-right label-info") 
-  		else
-  			content_tag(:span, 'high', :class => "label pull-right label-warning") 
+		when 'dificult'
+  			content_tag(:span, 'dificult', :class => "label pull-right label-danger") 
+		when 'very_dificult'
+  			content_tag(:span, 'very_dificult', :class => "label pull-right label-danger") 
 		end
 	end
 

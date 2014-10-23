@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   resources :organizations
 
+  resources :statistics
+
   #root to: 'visitors#index'
-  root to: 'projects#index'
+  root to: 'statistics#show'
 
   devise_for :users
   resources :users
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   # 	get "projects/#{scope}" => "projects#index", scope: scope
   # end
   get "projects/filter/:scope" => "projects#index", as: :filtered_projects
+  get "statistics/show", as: :list_statistics
 
   resources :projects do
   	resources :memberships

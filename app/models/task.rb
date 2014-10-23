@@ -3,7 +3,7 @@ class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :assigned, :class_name => "User", :foreign_key => "assigned_to_id"
   
-  enum complexity: [:low, :medium, :high]
+  enum complexity: [:easier, :easy, :medium, :dificult, :very_dificult]
   enum score: [:bad, :more_or_less, :good]
   enum status: [:open, :close, :delayed, :in_progress]
 
