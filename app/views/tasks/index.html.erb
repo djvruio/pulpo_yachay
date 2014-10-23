@@ -18,8 +18,8 @@
       <td width="50">
       <%=flag_task_deadline(task)%>
       </td>
-      <td width="300">
-      <strong>Deadline:</strong> <%= time_tag(task.deadline) %>
+      <td width="200">
+      <strong>Deadline:</strong> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y @ %I:%M %p") : 'Not Yet set'  %>
       </td>
       <td width="50">
         <strong>Asignada a: </strong> <%= task.assigned.try(:email) %>
@@ -28,7 +28,7 @@
       <strong>Complexity: </strong> <%=format_task_complexity(task)%>
       </td>
       <td width="160" align="right">
-      <strong>Status: </strong> <%= format_task_status(task) %>
+       <strong>Status: </strong>  <%= format_task_status(task) %>
       </td>
       </table>
 
@@ -43,13 +43,19 @@
           <td>
             <hr>
             <div class="actions">
+
 <!--              <%= link_to "Edit Task", edit_project_task_path(@project, task), :class => 'btn btn-default btn-sm' %> | 
-              <%= link_to "Delete Task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default btn-sm' %>  
+              <%= link_to "Delete Task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default btn-sm' %>
 -->
 <!--              <%= link_to "Edit Task", edit_project_task_path(@project, task), :class => 'btn btn-primary btn-xs' %>
               <%= link_to project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-primary btn-xs' do %>Delete Task<% end %>
--->              
-              <%= link_to "Edit Task", edit_project_task_path(@project, task) %> | <%= link_to "Delete task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
+-->
+              <% if task.assigned_to_id == current_user.id || current_user.admin?  %>
+                <%= link_to "Edit Task", edit_project_task_path(@project, task) %> | <%= link_to "Delete task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
+              <% else %>
+                <%= 'Cannot edit' %>
+              <% end %>
+
             </div>            
   
           </td>

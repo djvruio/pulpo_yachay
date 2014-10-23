@@ -2,11 +2,11 @@ module TasksHelper
 	
 	def format_task_status(task)
 		case task.status
-		when 'open'
+		when 1
   			content_tag(:span, 'open', :class => "label pull-right label-warning")
-		when 'close'  
+		when 2
   			content_tag(:span, 'close', :class => "label pull-right label-success")
-		when 'delayed'
+		when 3
   			content_tag(:span, 'delayed', :class => "label pull-right label-danger")
   		else
   			content_tag(:span, 'in_progress', :class => "label pull-right label-progress")
