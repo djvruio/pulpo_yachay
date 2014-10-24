@@ -18,7 +18,7 @@
       <li><%= link_to current_user.email, edit_user_registration_path %></li>
       <li class="dropdown">
         <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-          Settings <span class="caret"></span>
+          <%=t('Settings')  %> <span class="caret"></span>
         </a>
         <ul id="g-account-menu" class="dropdown-menu" role="menu">
           <% if current_user.admin? %>
