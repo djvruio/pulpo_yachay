@@ -59,12 +59,13 @@ ActiveRecord::Schema.define(version: 20141024143302) do
   create_table "projects", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.boolean  "is_strategic", default: false, null: false
-    t.integer  "status",       default: 0,     null: false
+    t.boolean  "is_strategic",           default: false, null: false
+    t.integer  "status",                 default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_critical",  default: false
-    t.integer  "price_cents",  default: 0
+    t.boolean  "is_critical",            default: false
+    t.integer  "price_cents",  limit: 8, default: 0
+    t.string   "alias"
   end
 
   create_table "statuses", force: true do |t|

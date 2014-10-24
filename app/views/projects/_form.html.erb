@@ -1,5 +1,5 @@
 
-<%= form_for(@project) do |f| %>
+<%= form_for @project do |f| %>
 
   <%= render "shared/errors", object: @project %>
 
@@ -15,26 +15,32 @@
         </div>  
 
         <div class="field">
+          <%= f.label :alias %>
+          <div class="controls">
+            <%= f.text_field :alias, class: 'form-control', :placeholder => "Project alias" %>
+          </div>
+        </div> 
+         <div class="field">
           <%= f.label :description %>
           <div class="controls">
-            <%= f.text_area :description, class: 'form-control', :placeholder => "Description project" %>
+            <%= f.text_area :description, class: 'form-control', :placeholder => "Project description" %>
           </div>
         </div> 
         <table>
           <td width="220">
             <div class="field">
-              <%= f.label :estimated_budget %>
+              <label>Estimated budget</label>
               <div class="input-group">
                 <span class="input-group-addon">$</span>
-                <%= f.text_field :estimated_budget, class: "form-control", size: "5" %>
+                <%= f.text_field :price, class: "form-control", size: "5" %>
               </div>
             </div>
           </td>
           <td width="200">
             <center>
-              <%= f.label :is_critic %>
+              <%= f.label :is_critical %>
               <div class="controls">
-                <%= f.check_box :is_critic %>
+                <%= f.check_box :is_critical %>
               </div>
             </center>
           </td>
@@ -66,16 +72,6 @@
     </div>
 
     <div class="actions">
-  <!--      <%= f.submit class: 'btn btn-primary' %> -->
-<!--      <%= button_tag(type: 'submit', class: "btn btn-primary btn-xs") do %>
-        <%  if params[:action] == 'new' %>
-          Create Project
-        <% else %>
-          Update Project
-        <% end %>
-      <% end %>    
-      <%= link_to :back, :class => 'btn btn-primary btn-xs' do %>Cancel<% end %>
--->
       <%= button_tag(type: 'submit', class: "btn btn-default btn-sm") do %>
         <%  if params[:action] == 'new' %>
           Create Project
