@@ -71,8 +71,8 @@
                 <td width="150">
                   <center>
                     <% if action_name != 'edit' %>
-                        <%= f.label :status %><br>
-                        <%= f.select :status, Status.all.map {|s| [s.name, s.id] }, {}, {:disabled=>true} %>
+                        <%= f.label :state %><br>
+                        <%= collection_select(:task, :state_id, State.all, :id, :name) %>
                     <% end %>
                   </center>
                 </td>

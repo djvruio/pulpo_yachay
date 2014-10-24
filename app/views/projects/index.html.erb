@@ -1,13 +1,13 @@
-<%= link_to 'Create Project', new_project_path, :class => 'btn btn-default' %>
+<%= link_to t('Create Project'), new_project_path, :class => 'btn btn-default' %>
 <hr>
-<h3>Listing Projects</h3>
+<h3> <%= t('Listing Projects') %> </h3>
 
 <hr>
 <% @projects.each do |project| %>
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4><b><%= format_is_critic(project) %> <%= link_to(project.name, project_tasks_path(project)) %> <%= format_status(project,'right') %></b></h4>
+      <h4><b><%= format_is_critical(project) %> <%= link_to(project.alias, project_tasks_path(project)) %> <%= format_status(project,'right') %></b></h4>
       <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= project.tasks.count %></span></h6>
       <br>
       <div class="progress">
@@ -17,6 +17,12 @@
     </div><!--/panel-heading--> 
     <div class="panel-body">
       <table>
+        <tr>
+          <td width="400">
+            Name:
+            <%= project.name %>
+          </td>
+        </tr>
         <tr>
           <td width="400">
             Description:
@@ -35,12 +41,6 @@
         </tr>
       </table>
       <hr>
-<!--      <%= link_to "Edit", edit_project_path(project), :class => 'btn btn-primary btn-xs' %>  
-      <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs' %> 
-      <%= link_to 'All memberships', project_memberships_path(project), :class => 'btn btn-primary btn-xs' %> 
-      <%= link_to 'Create membership', new_project_membership_path(project), :class => 'btn btn-primary btn-xs' %>
-
--->
       <%= link_to "Edit", edit_project_path(project) %> | 
       <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %> | 
       <%= link_to 'All memberships', project_memberships_path(project) %> | 
@@ -50,24 +50,3 @@
   </div><!--/panel-->
 
  <% end %>
-
-<!--
-<hr>
-<h2>Chartkick Examples</h2>
-
- <div class="row">
-
-   <div class="col-md-9">
-    <%= column_chart @projects.group(:status).count , {library: {title: "Total projects by status - colum chart"}} %>
-  </div>
-
-</div>
-
-<div class="row">
-  <div class="col-md-9">
-    <%= pie_chart @projects.group(:is_strategic).count, {library: {title: "Total strategic projects - pie chart"}} %>
-  </div>
-
-  
-</div>
--->

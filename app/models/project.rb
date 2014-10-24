@@ -11,15 +11,15 @@ class Project < ActiveRecord::Base
 	has_many :goals, through: :alignments
 	
 	validates :name, presence: true
+	validates :alias, presence: true
   #valida que ingrese hasta 255 caracteres y permite ingresar de igual forma el campo en blanco
   validates :description, length: { in: 0..255 },allow_blank: true
 
-  #Me valida el ingreso de numeros con 2 decimales y mayor que cero
-
-  validates :estimated_budget, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0 }
+  #validaciones para el campo presupuesto 
+  monetize :price_cents, :allow_nil => false, :numericality => { :greater_than_or_equal_to => 0 }
 
 	def estimated?
-		estimated_budget.blank? || estimated_budget.zero?
+		price.blank? || price.zero?
 	end
 
 end

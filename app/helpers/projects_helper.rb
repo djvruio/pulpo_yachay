@@ -7,13 +7,13 @@ module ProjectsHelper
 		if project.estimated?
 			content_tag(:strong, 'not estimated')
 		else
-			content_tag(:strong, number_to_currency(project.estimated_budget))
+			content_tag(:strong, humanized_money_with_symbol(project.price))
 		end
 	end
 
-  def format_is_critic(project)
-    if project.is_critic?
-    	content_tag(:span, 'Critic', :class => "label label-danger")
+  def format_is_critical(project)
+    if project.is_critical?
+      content_tag(:span, 'Critic', :class => "label label-danger")
     end
   end
 

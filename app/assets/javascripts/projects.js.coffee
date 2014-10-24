@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+jQuery ->
+  money_fields = $('#project_price')
+  money_fields.autoNumeric('init');
+  money_fields.keydown (event) ->
+    if event.keyCode == 13
+      $(this).autoNumeric('set', $(this).autoNumeric('get'))
