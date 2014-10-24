@@ -18,6 +18,9 @@ gem 'will_paginate', '3.0.7'
 gem 'chartkick', '~> 1.3.2'
 gem 'groupdate', '~> 2.3.0'
 gem 'active_median', '~> 0.1.1'
+gem 'money-rails', '~> 0.12.0'
+gem 'simple_form', '~> 3.0.2'
+gem 'jquery-turbolinks', '~> 2.1.0'
 
 group :development do
   gem 'spring'
