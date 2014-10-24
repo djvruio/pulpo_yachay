@@ -3,25 +3,23 @@
 	<hr>
 	<ul class="nav nav-stacked">
 		<% if user_signed_in? %>
-			<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reports'.html_safe, list_statistics_path %></li>
+			<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reports'.html_safe, statistics_path %></li>
 			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> All Projects'.html_safe, projects_path %></li>
 			<li><%= link_to '<i class="glyphicon glyphicon-check"></i> All Tasks'.html_safe %></li>
 		    <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alerts</a></li>
 
 <!--		    <li><h1><i class="glyphicon glyphicon-flag in-progress"></i></h1></li> -->
 
-            <li><%= link_to 'Open Strategic Projects', filtered_projects_path(:open_is_strategic), class: 'button'   %></li>
-            <li><%= link_to 'Closed Strategic Projects', filtered_projects_path(:closed_is_strategic), class: 'button' %></li>
-            <li><%= link_to 'Open Not Strategic Projects', filtered_projects_path(:open_is_not_strategic), class: 'button' %></li>
-            <li><%= link_to 'Closed Not Strategic Projects', filtered_projects_path(:closed_is_not_strategic), class: 'button' %></li>
 
-			<li><%= link_to 'New Project', new_project_path %></li>
+
+			
 		<% else %>
-			<li>Menu 1</li>
+<!--			<li>Menu 1</li>
 			<li>Menu 2</li>
+-->
 		<% end %>
 		<% if current_user.admin? %>
-			<li>Menu 3</li>
+<!--			<li>Menu 3</li> -->
 		<% end %>
 	</ul>  
 </div><!--/col-sm-3 left-->

@@ -5,6 +5,13 @@ class TasksController < ApplicationController
   before_action :set_project
 
   def index
+
+    if current_user.admin?
+
+    end
+    if current_user.user?
+
+    end
     #fail
     #binding.pry
     @tasks = @project.tasks.reverse_order
@@ -57,7 +64,7 @@ class TasksController < ApplicationController
      end
 
     def task_params
-      params.require(:task).permit(:description, :deadline, :complexity, :score, :status, :project_id,:assigned_to_id)
+      params.require(:task).permit(:description, :deadline, :complexity, :score, :state_id, :project_id,:assigned_to_id)
     end
 
     def set_project

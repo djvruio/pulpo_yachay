@@ -11,6 +11,12 @@ module ProjectsHelper
 		end
 	end
 
+  def format_is_critic(project)
+    if project.is_critic?
+    	content_tag(:span, 'Critic', :class => "label label-danger")
+    end
+  end
+
 	def format_is_strategic(project)
 		if project.is_strategic?
 			content_tag(:strong, 'yes')
@@ -28,10 +34,10 @@ module ProjectsHelper
 		case project.status
 		when 'open'
   			content_tag(:span, 'open', :class => "label #{opc_align} label-progress")
-		when 'closed'  
+		when 'closed'
   			content_tag(:span, 'closed', :class => "label #{opc_align} label-success")
 		when 'suspended'
-  			content_tag(:span, 'suspended', :class => "label #{opc_align} label-default")
+      content_tag(:span, 'suspended', :class => "label #{opc_align} label-default")
   		else
   			content_tag(:span, 'transferred', :class => "label #{opc_align} label-warning")
     end

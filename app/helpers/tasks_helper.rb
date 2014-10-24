@@ -1,16 +1,17 @@
 module TasksHelper
 	
-	def format_task_status(task)
-		case task.status
-		when 'open'
-  			content_tag(:span, 'open', :class => "label pull-right label-warning")
-		when 'close'  
-  			content_tag(:span, 'close', :class => "label pull-right label-success")
-		when 'delayed'
-  			content_tag(:span, 'delayed', :class => "label pull-right label-danger")
-  		else
-  			content_tag(:span, 'in_progress', :class => "label pull-right label-progress")
-		end
+	def format_task_states(task)
+		case task.state.name
+		when 'OPEN'
+  			var_class='label pull-right label-warning'
+		when 'CLOSED'
+  			var_class='label pull-right label-success'
+		when 'DELAYED'
+  			var_class='label pull-right label-danger'
+  		when 'IN PROGRESS'
+  			var_class='label pull-right label-progress'
+		end				
+		content_tag(:span, task.state.name, :class => var_class)					
 	end
 
 	def format_task_complexity(task)

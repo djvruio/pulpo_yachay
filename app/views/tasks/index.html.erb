@@ -6,10 +6,19 @@
 <%= link_to "Back", projects_path, :class => 'btn btn-default' %> | 
 <%= link_to "Details Project", project_path(@project), :class => 'btn btn-default' %> 
 <%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-default' %>
+<hr>
+<div class="panel-heading">
+      <h6 class="panel-title">Total Progress of Project <%= link_to(@project.name, @project)%></h6>
+      <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= @tasks.count %></span></h6>
+      <br>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: <%= calculate_percentage_statistics(@tasks) %>%"><%= calculate_percentage_statistics(@tasks) %>%
+        </div>
+      </div>      
+    </div><!--/panel-heading--> 
+      <h3>Listing tasks for <%= link_to(@project.name, @project)%></h3>
+<hr>
 
-<hr>
-<h3>Listing tasks for <%= link_to(@project.name, @project)%></h3>
-<hr>
 <% @tasks.each do |task| %>
 
   <div class="panel panel-info">
@@ -18,8 +27,8 @@
       <td width="50">
       <%=flag_task_deadline(task)%>
       </td>
-      <td width="300">
-      <strong>Deadline:</strong> <%= time_tag(task.deadline) %>
+      <td width="200">
+      <strong>Deadline:</strong> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y @ %I:%M %p") : 'Not Yet set'  %>
       </td>
       <td width="180">
         <strong>Asignada a: </strong> <%= task.assigned.try(:email) %>
@@ -28,7 +37,7 @@
       <strong>Complexity: </strong> <%=format_task_complexity(task)%>
       </td>
       <td width="160" align="right">
-      <strong>Status: </strong> <%= format_task_status(task) %>
+       <strong>Status: </strong>  <%= format_task_states(task) %>
       </td>
       </table>
 
@@ -43,13 +52,19 @@
           <td>
             <hr>
             <div class="actions">
+
 <!--              <%= link_to "Edit Task", edit_project_task_path(@project, task), :class => 'btn btn-default btn-sm' %> | 
-              <%= link_to "Delete Task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default btn-sm' %>  
+              <%= link_to "Delete Task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default btn-sm' %>
 -->
 <!--              <%= link_to "Edit Task", edit_project_task_path(@project, task), :class => 'btn btn-primary btn-xs' %>
               <%= link_to project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-primary btn-xs' do %>Delete Task<% end %>
--->              
-              <%= link_to "Edit Task", edit_project_task_path(@project, task) %> | <%= link_to "Delete task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
+-->
+              <% if task.assigned_to_id == current_user.id || current_user.admin?  %>
+                <%= link_to "Edit Task", edit_project_task_path(@project, task) %> | <%= link_to "Delete task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
+              <% else %>
+                <%= 'Cannot edit' %>
+              <% end %>
+
             </div>            
   
           </td>
