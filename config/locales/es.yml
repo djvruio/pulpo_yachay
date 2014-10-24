@@ -23,6 +23,8 @@ es:
   Pulpo:            "Pulpino"
   Home:             "Inicio"
   logout:           "Terminar Sesión"
+  Settings:         "Herramientas"
+  Dashboard:        "Escritorio"
   All Projects:     "Todos los proyectos"
   All Tasks:        "Todas las Tareas"
   Users:            "Usuarios"
@@ -36,11 +38,7 @@ es:
   Alerts:           "Alertas"
   Open Strategic Projects:  "Proyectos Estrategicos Abiertos"
 
+
   Create Project:   "Crear Proyecto"
   Listing Projects: "Listado de Proyectos"
   Strategic goals:  "Objetivos Estrategicos"
-
-
-
-
-

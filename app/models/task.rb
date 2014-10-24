@@ -17,9 +17,20 @@ class Task < ActiveRecord::Base
   #after_initialize :set_default_status, :if => :new_record?
   after_initialize :set_default_score, :if => :new_record?
   after_initialize :set_default_complexity, :if => :new_record?
+  after_initialize :set_default_deadline, :if => :new_record?
+
   validates :description, presence: true
 
-  validates :deadline, presence: true
+
+  def set_default_deadline
+    if self.deadline.present?
+      self.deadline = "#{self.deadline.strftime("%Y-%m-%d")}"
+    else
+      self.deadline = nil
+    end
+  end
+
+  #validates :deadline, presence: true
 
   #def task_time=(time)
   #  if self.deadline.present? && time.present?
