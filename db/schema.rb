@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20141023155627) do
     t.integer  "status",           default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_critic"
+    t.boolean  "is_critical",      default: false
   end
 
   create_table "statuses", force: true do |t|
@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 20141023155627) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "assigned_to_id"
-    t.integer  "author_id"
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
