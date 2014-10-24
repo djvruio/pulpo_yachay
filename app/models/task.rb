@@ -19,6 +19,7 @@ class Task < ActiveRecord::Base
 
   validates :description, presence: true
 
+
   def set_default_deadline
     if self.deadline.present?
       self.deadline = "#{self.deadline.strftime("%Y-%m-%d")}"

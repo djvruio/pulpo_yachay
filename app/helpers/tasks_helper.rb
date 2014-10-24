@@ -1,5 +1,14 @@
 module TasksHelper
-	
+
+
+  def format_assigned_to(task)
+    if task.assigned_to_id.present?
+      content_tag(:span,task.assigned.try(:email) , :class => "label pull-right label-warning")
+    else
+      content_tag(:span, 'Not one assigned', :class => "label pull-right label-warning")
+    end
+  end
+
 	def format_task_status(task)
 		case task.status
 		when 1

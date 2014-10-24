@@ -22,7 +22,7 @@
       <strong>Deadline:</strong> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y @ %I:%M %p") : 'Not Yet set'  %>
       </td>
       <td width="50">
-        <strong>Asignada a: </strong> <%= task.assigned.try(:email) %>
+        <strong>Asignada a: </strong> <%= format_assigned_to(task) %>
       </td>
       <td width="130" align="right">
       <strong>Complexity: </strong> <%=format_task_complexity(task)%>
