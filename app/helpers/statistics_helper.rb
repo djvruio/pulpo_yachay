@@ -40,6 +40,8 @@ module StatisticsHelper
   def is_member_assigned(member)
     if member == nil 
       value='No one assigned'
+    else
+      value=member
     end
     return value
   end
