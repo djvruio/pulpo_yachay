@@ -1,5 +1,5 @@
 
-<%= link_to "Chart Bar", show_statistics_path, :class => 'btn btn-default' %> 
+<%= link_to "Bar Chart", show_statistics_path, :class => 'btn btn-default' %> 
 <hr>
 <div class="panel panel-info">
   <div class="panel-heading">
@@ -11,7 +11,7 @@
       <table>
           <td width="200">
             <b>Responsable:</b>
-            <h6><%= project.memberships.where(responsible_role: "Principal")[0].user.email %></h6>
+            <h6><%= is_member_assigned(project.memberships.where(responsible_role: "Principal")[0].user.email) %></h6>
           </td>
           <td width="600">
             <h5><%= format_is_critical(project) %></h5>

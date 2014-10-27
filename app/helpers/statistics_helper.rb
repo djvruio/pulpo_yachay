@@ -35,5 +35,12 @@ module StatisticsHelper
       sum_work+=task.remaining_work
     end
     return sum_work
-  end	
+  end
+
+  def is_member_assigned(member)
+    if member != NIL 
+      value='No one assigned'
+    end
+    return value
+  end
 end
