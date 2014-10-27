@@ -1,9 +1,5 @@
 module ProjectsHelper
 
-
-
-
-
 	def format_description(project)
 		content_tag(:strong, project.description)
 	end	
