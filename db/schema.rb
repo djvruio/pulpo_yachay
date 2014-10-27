@@ -69,6 +69,13 @@ ActiveRecord::Schema.define(version: 20141024143302) do
     t.string   "alias"
   end
 
+  create_table "states", force: true do |t|
+    t.string   "name"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tasks", force: true do |t|
     t.text     "description"
     t.datetime "deadline"
