@@ -28,7 +28,7 @@
       <%=flag_task_deadline(task)%>
       </td>
       <td width="200">
-      <strong>Deadline:</strong> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y @ %I:%M %p") : 'Not Yet set'  %>
+      <strong>Deadline:</strong> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y") : 'Not Yet set'  %>
       </td>
       <td width="180">
         <strong>Asignada a: </strong> <%= task.assigned.try(:email) %>
