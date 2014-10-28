@@ -37,12 +37,11 @@ module StatisticsHelper
     return sum_work
   end
 
-  def is_member_assigned(member)
-    if member == nil 
+  def is_member_assigned(project)
+    if project.memberships.where(responsible_role: "Principal")[0].nil?
       value='No one assigned'
     else
-      value=member
+      member=project.memberships.where(responsible_role: "Principal")[0].user.email
     end
-    return value
   end
 end
