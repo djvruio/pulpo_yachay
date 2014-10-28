@@ -10,8 +10,13 @@
       <h4><b><%= format_is_critical(project) %> <%= link_to(project.alias, project_tasks_path(project)) %> <%= format_status(project,'right') %></b></h4>
       <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= project.tasks.count %></span></h6>
       <br>
+      <a href=<%= raw project_tasks_path(project)%>>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 10%">10%
+          </div>
+        </div>
+      </a>
       </div>
-
     </div><!--/panel-heading--> 
     <div class="panel-body">
       <table>
