@@ -18,7 +18,8 @@
               colors: ['#21610B','#B40404'],
               bar: {groupWidth: "50%"},
               legend: { position: "right" },
-              isStacked: true
+              isStacked: true,
+              height: <%= calculate_high_chart(@projects)%>
             };
 
         view.setColumns([0, 1,
