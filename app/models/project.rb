@@ -19,7 +19,6 @@ class Project < ActiveRecord::Base
 
   validates :name, length: { in: 0..1000 }
 
-  validates :goals_ids
 
   #validaciones para el campo presupuesto 
   monetize :price_cents, :allow_nil => false, :numericality => { :greater_than_or_equal_to => 0 }
