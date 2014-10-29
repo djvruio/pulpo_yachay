@@ -63,15 +63,7 @@ ActiveRecord::Schema.define(version: 20141029203958) do
     t.integer  "status",                 default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    t.boolean  "is_critical"
-=======
-    t.boolean  "is_critic",              default: false
->>>>>>> 1c169d86511fe8aaf4870996a48728477ff7a149
     t.boolean  "is_critical",            default: false
->>>>>>> 2be9a13a734a20a87e62b26f47a740565ed4ecab
     t.integer  "price_cents",  limit: 8, default: 0
     t.text     "alias"
   end
