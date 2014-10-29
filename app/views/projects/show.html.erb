@@ -15,7 +15,9 @@
 <strong><h3>Project Details</h3></strong>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4><b><%= @project.name %></b></h4>    
+    <h4><b><%= @project.name %></b></h4>
+    <%= link_to 'All memberships', project_memberships_path(@project), :class => 'btn btn-default btn-sm' %> |
+    <%= link_to 'Create membership', new_project_membership_path(@project), :class => 'btn btn-default btn-sm' %>
   </div><!--/panel-heading--> 
   <div class="panel-body">
      <table>
