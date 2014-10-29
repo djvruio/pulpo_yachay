@@ -66,7 +66,7 @@
         <h4> <%=t('Strategic goals')  %> </h4>
         <hr>
         <%= f.collection_check_boxes(:goal_ids, Goal.all, :id, :name) do |b|
-              b.label(:"data-value" => b.value) { b.check_box + truncate(b.text, length: 60, separator: ' ') }
+              b.label(:"data-value" => b.value) { b.check_box + truncate(b.text, length: 250, separator: ' ') }
               end %>
       </div>
     </div>
