@@ -9,12 +9,12 @@
         <div class="field">
           <%= f.label :alias %>
           <div class="controls">
-            <%= f.text_field :alias, class: 'form-control', :placeholder => "Project alias" %>
+            <%= f.text_field :alias,autofocus: true, class: 'form-control', :placeholder => "Project alias" %>
           </div>
         <div class="field">
           <%= f.label :name %>
           <div class="controls">
-            <%= f.text_field :name, autofocus: true, class: 'form-control', :placeholder => "Project name" %>
+            <%= f.text_area :name,  class: 'form-control', :placeholder => "Project name" %>
           </div>
         </div>  
         </div> 

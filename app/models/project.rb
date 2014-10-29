@@ -11,9 +11,12 @@ class Project < ActiveRecord::Base
 	has_many :goals, through: :alignments
 	
 	validates :name, presence: true
+
 	validates :alias, presence: true
   #valida que ingrese hasta 255 caracteres y permite ingresar de igual forma el campo en blanco
   validates :description, length: { in: 0..2000 },allow_blank: true
+
+  validates :name, length: { in: 0..1000 }
 
   #validaciones para el campo presupuesto 
   monetize :price_cents, :allow_nil => false, :numericality => { :greater_than_or_equal_to => 0 }
