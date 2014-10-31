@@ -13,6 +13,11 @@ module StatisticsHelper
 		return chart
 	end  
 
+  def calculate_high_chart(projects)
+    default_value=80
+    total_projects=default_value * projects.count
+  end
+
   def calculate_estimates_work(tasks)
     sum_work=0
     tasks.each do |task|

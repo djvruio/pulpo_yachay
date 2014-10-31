@@ -70,9 +70,9 @@ ActiveRecord::Schema.define(version: 20141029203958) do
 
   create_table "states", force: true do |t|
     t.string   "name"
-    t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "value"
   end
 
   create_table "tasks", force: true do |t|
