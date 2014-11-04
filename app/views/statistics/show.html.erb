@@ -1,50 +1,3 @@
-<script type="text/javascript">
-     google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable(<%= raw generate_chart_bars(@projects)%>);
-
-        var formatter = new google.visualization.NumberFormat({pattern:'#.#%'}); 
-        formatter.format(data, 1);
-        formatter.format(data, 2);
-
-        var view = new google.visualization.DataView(data);
-        view.setColumns([0, 1, 2]);
-
-            var options = {
-
-              vAxis: {title: 'PROJECTS',  titleTextStyle: {color: 'red'}},
-              hAxis: {title: 'PROGRESS', titleTextStyle: {color: '#FF0000'}, minValue: 1, maxValue: 1, format: '#%'},
-              colors: ['#21610B','#B40404'],
-              bar: {groupWidth: "50%"},
-              legend: { position: "right" },
-              isStacked: true,
-              height: <%= calculate_high_chart(@projects)%>
-            };
-
-        view.setColumns([0, 1,
-                           { calc: "stringify",
-                             sourceColumn: 1,
-                             type: "string",
-                             role: "annotation"
-                         },
-                           2,{ calc: "stringify",
-                             sourceColumn: 2,
-                             type: "string",
-                             role: "annotation" }
-                             ]);
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-
-        var selectHandler = function(e) {
-              window.location = data.getValue(chart.getSelection()[0]['row'], 3 );
-        }
-
-        google.visualization.events.addListener(chart, 'select', selectHandler);       
-
-        chart.draw(view, options);
-      }
-
-</script>
 <%= link_to "Reportes", statistics_path, :class => 'btn btn-default' %>
 <hr>
 <div class="panel panel-info">
@@ -53,6 +6,34 @@
     <h3>Statistics</h3>
   </div><!--/panel-heading--> 
   <div class="panel-body">
-      <div id="chart_div" style="width: 600px; height: 500px;"></div>
+    <table class="table table-responsible">
+      <thead>
+        <th width="100"><center><b>Proyecto</b></center></th>
+        <th width="20"><center><b>Responsable</b></center></th>
+        <th width="200"><center><b>Avance</b></center></th>
+        <th width="20"><center><b>Crítico?</b></center></th>
+        <th width="60"><center><b>Estratégico?</b></center></th>
+      </thead>
+      <% @projects.each do |project| %>
+        <tr>
+          <td>
+            <b><%= link_to project.alias, project_tasks_path(project) %></b>
+          </td>
+          <td>
+            <%= is_member_assigned(project).upcase %>
+          </td>
+          <td>
+            <%= raw generate_bar(project) %>
+          </td>
+          <td>
+            <%= format_is_critical(project,'center') %>
+          </td>
+          <td>
+            <%= format_is_strategic(project,'center') %>
+          </td>
+        </tr> 
+      <% end %>
+    </table>
+<!--      <div id="chart_div" style="width: 600px; height: 500px;"></div> -->
   </div>
 </div> <!--/panel-info -->

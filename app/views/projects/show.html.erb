@@ -20,24 +20,22 @@
     <%= link_to 'Create membership', new_project_membership_path(@project), :class => 'btn btn-default btn-sm' %>
   </div><!--/panel-heading--> 
   <div class="panel-body">
-     <table>
+    <table class="table">
       <tr>
-        <td width="400">
-          Description:
-          <%= format_description(@project) %>
-        </td>
+        <td><b>Description:</b></td>
+        <td><%= @project.description %></td>
       </tr>
+    </table>
+    <table class="table">
       <tr>
-        <td>Estimated budget: <%= format_budget(@project) %></td>
-      </tr>
-      <tr>
-        <td>¿Is Critic?: <%= format_is_critical(@project) %></td>
-      </tr>
-      <tr>
-         <td>Strategic: <%= format_is_strategic(@project) %></td>
-      </tr>
-      <tr>
-        <td>Status: <%= format_status(@project,'') %></td>
+        <td><b>Estimated budget:</b></td>
+        <td><%= format_budget(@project) %></td>
+        <td><b>¿Is Critic?:</b></td>
+        <td><%= format_is_critical(@project,'center') %></td>
+         <td><b>Strategic:</b></td>
+         <td><%= format_is_strategic(@project,'center') %></td>
+        <td><b>Status:</b></td>
+        <td><%= format_status(@project,'center') %></td>
       </tr>
     </table>
 
