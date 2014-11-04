@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :statistics
 
   #root to: 'visitors#index'
-  #root to: 'statistics#index'
-  root to: 'projects#index'
+  root to: 'statistics#show'
+  #root to: 'projects#index'
 
   devise_for :users
   resources :users
