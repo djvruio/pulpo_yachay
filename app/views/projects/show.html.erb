@@ -40,6 +40,12 @@
         <td>Status: <%= format_status(@project,'') %></td>
       </tr>
     </table>
+    <tr>
+      <td width="400">
+        Remark:
+        <%= format_remark(@project) %>
+      </td>
+    </tr>
     <hr>
      <h4><b>Strategic Goals for project <%= @project.name %></b></h4>    
     <ul>

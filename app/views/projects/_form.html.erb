@@ -61,7 +61,14 @@
             </td>
           </tr>
         </table>
-       
+        <div class="field">
+          <%= f.label :remark %>
+          <div class="controls">
+            <%= f.text_area :remark, class: 'form-control', :placeholder => "Remarks of the project" %>
+          </div>
+        </div>
+      </div>
+
         <hr>
         <h4> <%=t('Strategic goals')  %> </h4>
         <hr>
