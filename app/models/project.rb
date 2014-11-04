@@ -21,6 +21,8 @@ class Project < ActiveRecord::Base
 
   validates :goal_ids, :presence => {:message => "Goal one is necessary"}
 
+  validates :remark, length: { in: 0..2000 },allow_blank: true
+
   #validaciones para el campo presupuesto 
   monetize :price_cents, :allow_nil => false, :numericality => { :greater_than_or_equal_to => 0 }
 
