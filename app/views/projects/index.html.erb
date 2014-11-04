@@ -13,27 +13,28 @@
           <%= raw generate_bar(project) %>
     </div><!--/panel-heading--> 
     <div class="panel-body">
-      <table>
+      <table class="table">
         <tr>
-          <td width="400">
-            Name:
+          <td>
+            <b>Name:</b>
             <%= project.name %>
           </td>
         </tr>
         <tr>
-          <td width="400">
-            Description:
-            <%= format_description(project) %>
+          <td>
+            <b>Description:</b>
+            <%= project.description %>
           </td>
         </tr>
+      </table>
+      <table>
         <tr>
           <td>
             Strategic:
             <%= format_is_strategic(project,'') %>
           </td>
           <td>
-            Estimated budget:
-            <%= format_budget(project) %>
+            Estimated budget:<%= format_budget(project) %>
           </td>
         </tr>
         <tr>

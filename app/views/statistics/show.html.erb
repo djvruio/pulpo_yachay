@@ -7,13 +7,13 @@
   </div><!--/panel-heading--> 
   <div class="panel-body">
     <table class="table table-responsible">
-      <tr>
-        <td width="100"><center><b>Proyecto</b></center></td>
-        <td width="20"><center><b>Responsable</b></center></td>
-        <td width="200"><center><b>Avance</b></center></td>
-        <td width="20"><center><b>Crítico?</b></center></td>
-        <td width="60"><center><b>Estratégico?</b></center></td>
-      </tr>
+      <thead>
+        <th width="100"><center><b>Proyecto</b></center></th>
+        <th width="20"><center><b>Responsable</b></center></th>
+        <th width="200"><center><b>Avance</b></center></th>
+        <th width="20"><center><b>Crítico?</b></center></th>
+        <th width="60"><center><b>Estratégico?</b></center></th>
+      </thead>
       <% @projects.each do |project| %>
         <tr>
           <td>

@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141104184005) do
-=======
-ActiveRecord::Schema.define(version: 20141104181821) do
->>>>>>> 5b1dc693eb61fd4733537cb51ecf5e3dff0d7776
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,8 +63,7 @@ ActiveRecord::Schema.define(version: 20141104181821) do
     t.integer  "status",                         default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_critical"
-<<<<<<< HEAD
+    t.boolean  "is_critical",                    default: false
     t.integer  "price_cents",          limit: 8, default: 0
     t.text     "alias"
     t.text     "remark"
@@ -76,18 +71,13 @@ ActiveRecord::Schema.define(version: 20141104181821) do
     t.datetime "estimated_end_date"
     t.datetime "real_start_date"
     t.datetime "real_end_date"
-=======
-    t.integer  "price_cents",  limit: 8, default: 0
-    t.text     "alias"
-    t.text     "remark"
->>>>>>> 5b1dc693eb61fd4733537cb51ecf5e3dff0d7776
   end
 
   create_table "states", force: true do |t|
     t.string   "name"
-    t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "value"
   end
 
   create_table "tasks", force: true do |t|
