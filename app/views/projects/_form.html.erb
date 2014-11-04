@@ -61,7 +61,27 @@
             </td>
           </tr>
         </table>
-       
+
+        <table>
+          <td width="300">
+            <%= f.label :estimated_start_date %><br>
+            <%= f.date_select :estimated_start_date , :placeholder => "Day-Month-Year" %>
+          </td>
+          <td width="300">
+            <%= f.label :estimated_end_date %><br>
+            <%= f.date_select :estimated_end_date , :placeholder => "Day-Month-Year" %>
+          </td>
+          <td width="300">
+            <%= f.label :real_start_date %><br>
+            <%= f.date_select :real_start_date , :placeholder => "Day-Month-Year" %>
+          </td>
+          <td width="300">
+            <%= f.label :real_end_date %><br>
+            <%= f.date_select :real_end_date , :placeholder => "Day-Month-Year" %>
+          </td>
+        </table>
+
+
         <hr>
         <h4> <%=t('Strategic goals')  %> </h4>
         <hr>
