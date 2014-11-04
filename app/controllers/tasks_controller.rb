@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     end
     #fail
     #binding.pry
-    @tasks = @project.tasks.reverse_order
+    @tasks = @project.tasks.order(deadline: :desc)
     respond_with(@tasks)
   end
 

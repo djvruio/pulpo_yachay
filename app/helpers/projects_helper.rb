@@ -11,7 +11,12 @@ module ProjectsHelper
 
 	def format_description(project)
 		content_tag(:strong, project.description)
-	end	
+  end
+
+  def format_remark(project)
+    content_tag(:strong, project.remark)
+  end
+
 	def format_budget(project)
 		if project.estimated?
 			content_tag(:p, 'not estimated')

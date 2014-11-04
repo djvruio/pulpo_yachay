@@ -92,7 +92,14 @@
                     <%= collection_select(:task, :state_id, State.all, :id, :name) %>
                   </center>
                 </td>
-
+                    <% if :assigned_to_id == current_user.id or :assigned_to_id == :assigned_to_id   %>
+                        <td width="100">
+                          <center>
+                            <%= f.label "Assigned to" %><br>
+                            <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
+                          </center>
+                        </td>
+                    <% end %>
               <% end %>
               
             <% end %>

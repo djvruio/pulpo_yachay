@@ -38,6 +38,37 @@
         <td><%= format_status(@project,'center') %></td>
       </tr>
     </table>
+
+    <table>
+      <thead>
+      <th>Estimated Start Date:</th>
+      <th>Estimated end Date:</th>
+      <th>Real Start Date:</th>
+      <th>Real End Date:</th>
+      </thead>
+      <tr>
+        <td width="180">
+          <%= @project.estimated_start_date? ? @project.estimated_start_date.strftime("%d %B, %Y") : 'Not set yet'  %>
+        </td>
+        <td width="180">
+          <%= @project.estimated_end_date? ? @project.estimated_end_date.strftime("%d %B, %Y") : 'Not set yet' %>
+        </td>
+        <td width="180">
+          <%= @project.real_start_date? ? @project.real_start_date.strftime("%d %B, %Y") : 'Not set yet' %>
+        </td>
+        <td width="180">
+          <%= @project.real_end_date? ? @project.real_end_date.strftime("%d %B, %Y") : 'Not set yet' %>
+        </td>
+      </tr>
+    </table>
+
+    <tr>
+      <td width="400">
+        Remark:
+        <%= format_remark(@project) %>
+      </td>
+    </tr>
+
     <hr>
      <h4><b>Strategic Goals for project <%= @project.name %></b></h4>    
     <ul>
