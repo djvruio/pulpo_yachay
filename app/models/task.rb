@@ -18,6 +18,7 @@ class Task < ActiveRecord::Base
   after_initialize :set_default_score, :if => :new_record?
   after_initialize :set_default_complexity, :if => :new_record?
   after_initialize :set_default_deadline, :if => :new_record?
+  after_initialize :set_default_real_deadline, :if => :new_record?
 
   validates :description, presence: true
 
@@ -27,6 +28,14 @@ class Task < ActiveRecord::Base
       self.deadline = "#{self.deadline.strftime("%Y-%m-%d")}"
     else
       self.deadline = nil
+    end
+  end
+
+  def set_default_real_deadline
+    if self.real_deadline.present?
+      self.real_deadline = "#{self.real_deadline.strftime("%Y-%m-%d")}"
+    else
+      self.real_deadline = nil
     end
   end
 
