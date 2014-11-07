@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141104205306) do
-=======
-ActiveRecord::Schema.define(version: 20141104184005) do
->>>>>>> 45193b7b2562694cdb512f4a757638daa9d9834d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,11 +63,7 @@ ActiveRecord::Schema.define(version: 20141104184005) do
     t.integer  "status",                         default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
-    t.boolean  "is_critical"
-=======
     t.boolean  "is_critical",                    default: false
->>>>>>> 45193b7b2562694cdb512f4a757638daa9d9834d
     t.integer  "price_cents",          limit: 8, default: 0
     t.text     "alias"
     t.text     "remark"
