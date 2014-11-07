@@ -24,27 +24,25 @@
   <div class="panel panel-info">
     <div class="panel-heading">
       <table>
-      <td width="50">
-      <%=flag_task_deadline(task)%>
-      </td>
-      <td width="200">
-      <strong>Deadline:</strong> <br> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
-      </td>
-      <td width="200">
-        <strong>Real Deadline:</strong> <br> <%= task.real_deadline? ? task.real_deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
-      </td>
-      <td width="180">
-        <strong>Asignada a: </strong> <%= task.assigned.try(:email) %>
-      </td>
-      <td width="150" align="right">
-      <strong>Complexity: </strong> <%=format_task_complexity(task)%>
-      </td>
-      <td width="160" align="right">
-       <strong>Status: </strong>  <%= format_task_states(task) %>
-      </td>
+        <td width="50">
+          <%=flag_task_deadline(task)%>
+        </td>
+        <td width="200">
+          <strong>Deadline:</strong> <br> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
+        </td>
+        <td width="200">
+          <strong>Real Deadline:</strong> <br> <%= task.real_deadline? ? task.real_deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
+        </td>
+        <td width="180">
+          <strong>Asignada a: </strong> <%= task.assigned.try(:email) %>
+        </td>
+        <td width="150" align="right">
+          <strong>Complexity: </strong> <%=format_task_complexity(task)%>
+        </td>
+        <td width="160" align="right">
+         <strong>Status: </strong>  <%= format_task_states(task) %>
+        </td>
       </table>
-
-
     </div><!--/panel-heading--> 
     <div class="panel-body">
       <table>

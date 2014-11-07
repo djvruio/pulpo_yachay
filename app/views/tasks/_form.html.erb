@@ -32,84 +32,87 @@
         </div>
         <div class="field">        
           <table>
-            <td width="20">
-                <%= f.label :deadline %><br>
-                <%= f.text_field :deadline , :placeholder => "Day-Month-Year" %>
-            </td>
-
-            <td width="20">
-              <%= f.label :real_deadline %><br>
-              <%= f.text_field :real_deadline , :placeholder => "Day-Month-Year" %>
-            </td>
-            <td width="100">
-              <center>
-                <%= f.label :complexity %><br>
-                <%= f.select :complexity, Task.complexities.keys.map {|complexity| [complexity.titleize, complexity]}%>
-              </center>
-            </td>
-
-            <% if current_user.admin? %>
-
-              <td width="150">
-                <center>
-                  <%= f.label :state %><br>
-                  <%= collection_select(:task, :state_id, State.all, :id, :name) %> 
-                </center>
+            <tr>
+              <td width="20">
+                  <%= f.label :deadline %><br>
+                  <%= f.text_field :deadline , :placeholder => "Day-Month-Year" %>
               </td>
+
+              <td width="20">
+                <%= f.label :real_deadline %><br>
+                <%= f.text_field :real_deadline , :placeholder => "Day-Month-Year" %>
+              </td>
+            </tr>
+            <tr>
               <td width="100">
                 <center>
-                  <%= f.label :score %><br>
-                  <%= f.select :score, Task.scores.keys.map {|score| [score.titleize, score]}%>
+                  <%= f.label :complexity %><br>
+                  <%= f.select :complexity, Task.complexities.keys.map {|complexity| [complexity.titleize, complexity]}%>
                 </center>
               </td>
 
-              <td width="100">
-                  <center>
-                    <%= f.label "Assigned to" %><br>
-                    <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
-                  </center>
-              </td>
-
-            <% else %>
-
-              <% if is_new_task(params[:action]) %>
+              <% if current_user.admin? %>
 
                 <td width="150">
                   <center>
-                    <% if action_name != 'edit' %>
-                        <%= f.label :state %><br>
-                        <%= collection_select(:task, :state_id, State.all, :id, :name) %>
-                    <% end %>
+                    <%= f.label :state %><br>
+                    <%= collection_select(:task, :state_id, State.all, :id, :name) %> 
+                  </center>
+                </td>
+                <td width="100">
+                  <center>
+                    <%= f.label :score %><br>
+                    <%= f.select :score, Task.scores.keys.map {|score| [score.titleize, score]}%>
                   </center>
                 </td>
 
-                    <td width="100">
-                      <center>
-                        <%= f.label "Assigned to" %><br>
-                        <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
-                      </center>
-                    </td>
+                <td width="100">
+                    <center>
+                      <%= f.label "Assigned to" %><br>
+                      <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
+                    </center>
+                </td>
 
               <% else %>
 
-                <td width="150">
-                  <center>
-                    <%= f.label :status %><br>
-                    <%= collection_select(:task, :state_id, State.all, :id, :name) %>
-                  </center>
-                </td>
-                    <% if :assigned_to_id == current_user.id or :assigned_to_id == :assigned_to_id   %>
-                        <td width="100">
-                          <center>
-                            <%= f.label "Assigned to" %><br>
-                            <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
-                          </center>
-                        </td>
-                    <% end %>
-              <% end %>
-              
-            <% end %>
+                <% if is_new_task(params[:action]) %>
 
+                  <td width="150">
+                    <center>
+                      <% if action_name != 'edit' %>
+                          <%= f.label :state %><br>
+                          <%= collection_select(:task, :state_id, State.all, :id, :name) %>
+                      <% end %>
+                    </center>
+                  </td>
+
+                      <td width="100">
+                        <center>
+                          <%= f.label "Assigned to" %><br>
+                          <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
+                        </center>
+                      </td>
+
+                <% else %>
+
+                  <td width="150">
+                    <center>
+                      <%= f.label :status %><br>
+                      <%= collection_select(:task, :state_id, State.all, :id, :name) %>
+                    </center>
+                  </td>
+                      <% if :assigned_to_id == current_user.id or :assigned_to_id == :assigned_to_id   %>
+                          <td width="100">
+                            <center>
+                              <%= f.label "Assigned to" %><br>
+                              <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
+                            </center>
+                          </td>
+                      <% end %>
+                <% end %>
+                
+              <% end %>
+            </tr>
           </table>
         </div>
 

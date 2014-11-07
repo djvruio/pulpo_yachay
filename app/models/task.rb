@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
 
   attr_reader :task_time
 
-  enum complexity: [:easier, :easy, :medium, :dificult, :very_dificult]
+  enum complexity: [:'(1 día) easier', :'(2 días) easy', :'(3 días) medium', :'(4 días) dificult', :'(5 días) very_dificult']
 
   #enum complexity: [:easier,:easy,:medium,:difficult,:hard]
 
