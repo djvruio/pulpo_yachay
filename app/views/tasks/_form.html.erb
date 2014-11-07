@@ -10,6 +10,7 @@
       <script>
           $(function() {
               $( "#task_deadline" ).datepicker({ dateFormat: "dd-mm-yy" });
+              $( "#task_real_deadline" ).datepicker({ dateFormat: "dd-mm-yy" });
           });
       </script>
     </head>
@@ -34,6 +35,11 @@
             <td width="20">
                 <%= f.label :deadline %><br>
                 <%= f.text_field :deadline , :placeholder => "Day-Month-Year" %>
+            </td>
+
+            <td width="20">
+              <%= f.label :real_deadline %><br>
+              <%= f.text_field :real_deadline , :placeholder => "Day-Month-Year" %>
             </td>
             <td width="100">
               <center>
