@@ -1,39 +1,27 @@
-<%= link_to "Reportes", statistics_path, :class => 'btn btn-default' %>
+
+<%= link_to "Bar Chart", statistics_path, :class => 'btn btn-default' %>
 <hr>
 <div class="panel panel-info">
   <div class="panel-heading">
     
-    <h3>Statistics</h3>
+    <h3>Project's Reports</h3>
   </div><!--/panel-heading--> 
   <div class="panel-body">
-    <table class="table table-responsible">
-      <thead>
-        <th width="100"><center><b>Proyecto</b></center></th>
-        <th width="20"><center><b>Responsable</b></center></th>
-        <th width="200"><center><b>Avance</b></center></th>
-        <th width="20"><center><b>Crítico?</b></center></th>
-        <th width="60"><center><b>Estratégico?</b></center></th>
-      </thead>
-      <% @projects.each do |project| %>
-        <tr>
-          <td>
-            <b><%= link_to project.alias, project_tasks_path(project) %></b>
+    <% @projects.each do |project| %>  
+      <table>
+          <td width="200">
+            <b>Responsable:</b>
+            <h6><%= is_member_assigned(project) %></h6>
           </td>
-          <td>
-            <%= is_member_assigned(project).upcase %>
+          <td width="600">
+            <h5><%= format_is_critical(project,"") %></h5>
+            <h4><b><%= link_to(project.alias, project_tasks_path(project)) %> <%= format_status(project,'right') %></b></h4>
+            <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= project.tasks.count %></span></h6>
+            <br>
+              <%= raw generate_bar(project) %>
           </td>
-          <td>
-            <%= raw generate_bar(project) %>
-          </td>
-          <td>
-            <%= format_is_critical(project,'center') %>
-          </td>
-          <td>
-            <%= format_is_strategic(project,'center') %>
-          </td>
-        </tr> 
-      <% end %>
-    </table>
-<!--      <div id="chart_div" style="width: 600px; height: 500px;"></div> -->
-  </div>
+      </table>     
+      <hr>   
+    <% end %>
+  </div> <!-- panel-body -->
 </div> <!--/panel-info -->

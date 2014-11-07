@@ -18,7 +18,7 @@ module StatisticsHelper
     width_value=calculate_percentage_statistics(project.tasks).to_i
     link_project=project_tasks_path(project)
     if width_value == 0
-      prog_bar="progress-bar-danger"
+      prog_bar="progress-bar-info"
       value=100
     else
       prog_bar="progress-bar-success"
