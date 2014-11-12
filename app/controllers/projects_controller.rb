@@ -24,13 +24,13 @@ class ProjectsController < ApplicationController
         when 'closed_is_not_strategic'
           @projects = Project.closed.where('is_strategic = ?',false)
         when 'open_is_critic'
-          @projects = Project.open.where('is_critic = ?',true)
+          @projects = Project.open.where('is_critical = ?',true)
         when 'open_is_not_critic'
-          @projects = Project.open.where('is_critic = ?',false)
+          @projects = Project.open.where('is_critical = ?',false)
         when 'closed_is_critic'
-          @projects = Project.closed.where('is_critic = ?',true)
+          @projects = Project.closed.where('is_critical = ?',true)
         when 'closed_is_not_critic'
-          @projects = Project.closed.where('is_critic = ?',false)
+          @projects = Project.closed.where('is_critical = ?',false)
         else
           @projects = Project.all
       end
@@ -54,13 +54,13 @@ class ProjectsController < ApplicationController
         when 'closed_is_not_strategic'
           @projects = current_user.projects.closed.where('is_strategic = ?',false)
         when 'open_is_critic'
-          @projects = current_user.projects.open.where('is_critic = ?',true)
+          @projects = current_user.projects.open.where('is_critical = ?',true)
         when 'open_is_not_critic'
-          @projects = current_user.projects.open.where('is_critic = ?',false)
+          @projects = current_user.projects.open.where('is_critical = ?',false)
         when 'closed_is_critic'
-          @projects = current_user.projects.closed.where('is_critic = ?',true)
+          @projects = current_user.projects.closed.where('is_critical = ?',true)
         when 'closed_is_not_critic'
-          @projects = current_user.projects.closed.where('is_critic = ?',false)
+          @projects = current_user.projects.closed.where('is_critical = ?',false)
         else
           @projects = current_user.projects.all
       end
