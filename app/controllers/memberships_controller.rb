@@ -1,8 +1,10 @@
 class MembershipsController < ApplicationController
 	
 	before_filter :authenticate_user!
+
+  before_action :set_membership, only: [:destroy]
 	before_action :set_project
-	
+
 	def index
 		@memberships = @project.memberships
 	end
@@ -25,8 +27,19 @@ class MembershipsController < ApplicationController
 		end
 	end
 
+  def destroy
+    @membership.destroy
+    respond_to do |format|
+      format.html { redirect_to project_memberships_path(@project), notice: 'Membership was successfully deleted.' }
+      format.json { head :ok }
+    end
+  end
+
 	private
 
+  def set_membership
+    @membership = Membership.find(params[:id])
+  end
 
   def set_project
     @project = Project.find(params[:project_id])
