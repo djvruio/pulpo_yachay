@@ -6,7 +6,7 @@ class MembershipsController < ApplicationController
 	before_action :set_project
 
 	def index
-		@memberships = @project.memberships
+		@memberships = @project.memberships.order(responsible_role: :desc)
 	end
 
 	def new
