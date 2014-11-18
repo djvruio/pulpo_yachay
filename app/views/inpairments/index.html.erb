@@ -1,0 +1,35 @@
+
+<div class="panel-heading">
+  <h6 class="panel-title">Inpairments for  <%= link_to(@task.description, @tasks)%></h6>
+  <h6 class="panel-title"><span class="pull-right">Total inpairments: <%= @inpairments.count %></span></h6>
+  <br>
+ </div>
+
+<hr>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inpairments.each do |inpairment| %>
+      <tr>
+        <td><%= inpairment.description %></td>
+
+        <td><%= link_to 'Edit', edit_project_task_inpairment_path(@project,@task,inpairment) %></td>
+        <td><%= link_to 'Destroy', project_task_inpairment_path(@project,@task,inpairment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Inpairment',new_project_task_inpairment_path %>
+
+<%= link_to 'Back',:back  %>

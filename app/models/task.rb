@@ -5,12 +5,13 @@ class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :assigned, :class_name => "User", :foreign_key => "assigned_to_id"
 
+  has_many :inpairments, :dependent => :destroy
+
   attr_reader :task_time
 
   enum complexity: [:'(1 día) easier', :'(2 días) easy', :'(3 días) medium', :'(4 días) dificult', :'(5 días) very_dificult']
 
   #enum complexity: [:easier,:easy,:medium,:difficult,:hard]
-
   enum score: [:bad, :more_or_less, :good]
   #enum status: [:open, :close, :delayed, :in_progress]
 

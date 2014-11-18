@@ -53,20 +53,13 @@
           <td>
             <hr>
             <div class="actions">
-
-<!--              <%= link_to "Edit Task", edit_project_task_path(@project, task), :class => 'btn btn-default btn-sm' %> | 
-              <%= link_to "Delete Task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default btn-sm' %>
--->
-<!--              <%= link_to "Edit Task", edit_project_task_path(@project, task), :class => 'btn btn-primary btn-xs' %>
-              <%= link_to project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-primary btn-xs' do %>Delete Task<% end %>
--->
               <% if task.assigned_to_id == current_user.id || current_user.admin? || task.assigned_to_id== nil  %>
                 <%= link_to "Edit Task", edit_project_task_path(@project, task) %> | <%= link_to "Delete task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
               <% else %>
                 <%= 'Cannot edit' %>
               <% end %>
-
-            </div>            
+              | <%= link_to 'All Impairments', project_task_inpairments_path(@project,task)  %>
+            </div>
   
           </td>
         </tr>
