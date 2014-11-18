@@ -10,29 +10,29 @@
     <th>Nombre</th>
   </thead>
   <% @memberships.each do |membership| %>
-  <tbody>
-    <td>
-      <span class="how-heard">
-        (<%= membership.responsible_role %>)    
-      </span>
-    </td>
-    <td>
-      <span class="how-heard">
-        (<%= membership.user.email %>)    
-      </span>
-    </td>
-    <td>
-      <span class="how-heard">
-        (<%= membership.user.name %>)    
-      </span>
-    </td>
-<!--       <span class="date">
-        <%= time_ago_in_words(membership.created_at) %> ago
-      </span>
--->   
-    <td>
-      <%= link_to "Delete Membership", project_membership_path(@project, membership), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default btn-sm' %>
-    </td>
+    <tbody>
+      <td>
+        <span class="how-heard">
+          (<%= membership.responsible_role %>)    
+        </span>
+      </td>
+      <td>
+        <span class="how-heard">
+          (<%= membership.user.email %>)    
+        </span>
+      </td>
+      <td>
+        <span class="how-heard">
+          (<%= membership.user.name %>)    
+        </span>
+      </td>
+  <!--       <span class="date">
+          <%= time_ago_in_words(membership.created_at) %> ago
+        </span>
+  -->   
+      <td>
+            <%= link_to "Delete Membership", project_membership_path(@project, membership), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default btn-sm' %>
+      </td>
     </tbody>
   <% end %>
 </table>
