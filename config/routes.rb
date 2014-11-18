@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :inpairments
+
   resources :states
 
   resources :goals
@@ -26,7 +28,10 @@ Rails.application.routes.draw do
   resources :projects do
     resources :memberships
     resources :alignmentse
-    resources :tasks
+    resources :tasks do
+      resources :inpairments
+    end
+
   end
   
 end

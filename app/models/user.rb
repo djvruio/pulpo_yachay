@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :memberships, dependent: :destroy
   has_many :projects, through: :memberships
+
+  has_many :inpairments, :dependent => :destroy
+
   #has_many :tasks, dependent: :destroy
 
   enum role: [:user, :admin, :vip]

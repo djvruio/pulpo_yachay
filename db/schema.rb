@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104205306) do
+ActiveRecord::Schema.define(version: 20141114174711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 20141104205306) do
 
   add_index "goals", ["organization_id", "created_at"], name: "index_goals_on_organization_id_and_created_at", using: :btree
   add_index "goals", ["organization_id"], name: "index_goals_on_organization_id", using: :btree
+
+  create_table "inpairments", force: true do |t|
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "task_id"
+  end
+
+  add_index "inpairments", ["task_id"], name: "index_inpairments_on_task_id", using: :btree
+  add_index "inpairments", ["user_id"], name: "index_inpairments_on_user_id", using: :btree
 
   create_table "memberships", force: true do |t|
     t.integer  "project_id"
@@ -63,7 +74,7 @@ ActiveRecord::Schema.define(version: 20141104205306) do
     t.integer  "status",                         default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_critical",                    default: false
+    t.boolean  "is_critical"
     t.integer  "price_cents",          limit: 8, default: 0
     t.text     "alias"
     t.text     "remark"
@@ -75,9 +86,9 @@ ActiveRecord::Schema.define(version: 20141104205306) do
 
   create_table "states", force: true do |t|
     t.string   "name"
+    t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "value"
   end
 
   create_table "tasks", force: true do |t|

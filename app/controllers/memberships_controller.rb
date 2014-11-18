@@ -1,7 +1,6 @@
 class MembershipsController < ApplicationController
 	
 	before_filter :authenticate_user!
-
 # 	before_action :set_membership, only: [:destroy]
 	before_action :set_project
 
@@ -14,7 +13,6 @@ class MembershipsController < ApplicationController
 	end
 
 	def create
-
 		#binding.pry
 		@user = User.find(params[:memberships][:user_id])
 		@membership = @project.memberships.new(membership_params)
@@ -28,8 +26,8 @@ class MembershipsController < ApplicationController
 	end
 
   def destroy
-  	@project=Project.find(params[:project_id])
-  	@membership=@project.memberships.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @membership = @project.memberships.find(params[:id])
     @membership.destroy
     respond_to do |format|
       format.html { redirect_to project_memberships_path(@project), notice: 'Membership was successfully deleted.' }
