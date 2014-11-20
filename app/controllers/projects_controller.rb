@@ -11,39 +11,6 @@ class ProjectsController < ApplicationController
     end  
     @projects=general_filter(object,params[:scope])
   end 
-    protected 
-  
-  def general_filter(object,criteria)
-    case criteria
-      when 'all'
-        filter = object.all
-      when 'closed'
-        filter = object.closed
-      when 'suspended'
-        filter = object.suspended
-      when 'transferred'
-        filter = object.transferred
-      when 'open_is_strategic'
-        filter = object.open.where('is_strategic = ?',true)
-      when 'open_is_not_strategic'
-        filter = object.open.where('is_strategic = ?',false)
-      when 'closed_is_strategic'
-        filter = object.closed.where('is_strategic = ?',true)
-      when 'closed_is_not_strategic'
-        filter = object.closed.where('is_strategic = ?',false)
-      when 'open_is_critic'
-        filter = object.open.where('is_critical = ?',true)
-      when 'open_is_not_critic'
-        filter = object.open.where('is_critical = ?',false)
-      when 'closed_is_critic'
-        filter = object.closed.where('is_critical = ?',true)
-      when 'closed_is_not_critic'
-        filter = object.closed.where('is_critical = ?',false)
-      else
-        filter = object.open
-    end
-    return filter
-  end
 
 	def show
     @openS = Project.open.where('is_strategic = ?',true)
@@ -91,4 +58,38 @@ class ProjectsController < ApplicationController
 	    def project_params
 	      params.require(:project).permit(:name, :description, :price, :is_strategic, :status,:is_critical,:alias,:remark,:estimated_start_date,:estimated_end_date,:real_start_date,:real_end_date, :goal_ids=>[])
 	    end
+
+  protected 
+  
+  def general_filter(object,criteria)
+    case criteria
+      when 'all'
+        filter = object.all
+      when 'closed'
+        filter = object.closed
+      when 'suspended'
+        filter = object.suspended
+      when 'transferred'
+        filter = object.transferred
+      when 'open_is_strategic'
+        filter = object.open.where('is_strategic = ?',true)
+      when 'open_is_not_strategic'
+        filter = object.open.where('is_strategic = ?',false)
+      when 'closed_is_strategic'
+        filter = object.closed.where('is_strategic = ?',true)
+      when 'closed_is_not_strategic'
+        filter = object.closed.where('is_strategic = ?',false)
+      when 'open_is_critic'
+        filter = object.open.where('is_critical = ?',true)
+      when 'open_is_not_critic'
+        filter = object.open.where('is_critical = ?',false)
+      when 'closed_is_critic'
+        filter = object.closed.where('is_critical = ?',true)
+      when 'closed_is_not_critic'
+        filter = object.closed.where('is_critical = ?',false)
+      else
+        filter = object.open
+    end
+    return filter
+  end
 end
