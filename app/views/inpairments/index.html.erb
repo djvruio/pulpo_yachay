@@ -1,14 +1,11 @@
-
+<%= link_to 'Back',project_tasks_path(@project,@tasks), class: 'btn btn-default' %> | 
+<%= link_to 'New Impairment',new_project_task_inpairment_path, class: 'btn btn-default' %>
+<hr>
 <div class="panel-heading">
-  <h6 class="panel-title">Inpairments for  <%= link_to(@task.description, @tasks)%></h6>
-  <h6 class="panel-title"><span class="pull-right">Total inpairments: <%= @inpairments.count %></span></h6>
-  <br>
+  <h3><%= @inpairments.count %> Impairments for <%= link_to(@task.description, @tasks)%></h3>
  </div>
 
-<hr>
-
-
-<table>
+<table class="table table-responsive">
   <thead>
     <tr>
       <th>Description</th>
@@ -20,16 +17,10 @@
     <% @inpairments.each do |inpairment| %>
       <tr>
         <td><%= inpairment.description %></td>
-
-        <td><%= link_to 'Edit', edit_project_task_inpairment_path(@project,@task,inpairment) %></td>
-        <td><%= link_to 'Destroy', project_task_inpairment_path(@project,@task,inpairment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+        <td><%= link_to 'Edit', edit_project_task_inpairment_path(@project,@task,inpairment), class: 'btn btn-default btn-sm' %></td>
+        <td><%= link_to 'Destroy', project_task_inpairment_path(@project,@task,inpairment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm' %></tr>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-
-<%= link_to 'New Inpairment',new_project_task_inpairment_path %>
-
-<%= link_to 'Back',:back  %>

@@ -11,11 +11,11 @@
       <table>
           <td width="200">
             <b>Responsable:</b>
-            <h6><%= is_member_assigned(project) %></h6>
+            <h6><%= is_member_assigned(project).upcase %></h6>
           </td>
           <td width="600">
             <h5><%= format_is_critical(project,"") %></h5>
-            <h4><b><%= link_to(project.alias, project_tasks_path(project)) %> <%= format_status(project,'right') %></b></h4>
+            <h4><b><%= link_to(project.alias.upcase, project_tasks_path(project)) %> <%= format_status(project,'right') %></b></h4>
             <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= project.tasks.count %></span></h6>
             <br>
               <%= raw generate_bar(project) %>

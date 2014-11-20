@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20141114174711) do
     t.integer  "status",                         default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_critical"
+    t.boolean  "is_critical",                    default: false
     t.integer  "price_cents",          limit: 8, default: 0
     t.text     "alias"
     t.text     "remark"
@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 20141114174711) do
 
   create_table "states", force: true do |t|
     t.string   "name"
-    t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "value"
   end
 
   create_table "tasks", force: true do |t|
