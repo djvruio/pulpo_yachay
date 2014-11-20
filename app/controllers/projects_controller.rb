@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-	
 	before_filter :authenticate_user!
 	respond_to :html, :xml, :json
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
@@ -103,7 +102,6 @@ class ProjectsController < ApplicationController
   		@project.destroy
   		respond_with(@project)
   	end
-
 
   	private
 
