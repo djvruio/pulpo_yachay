@@ -1,5 +1,4 @@
 module StatisticsHelper
-
  	def generate_chart_bars(projects)
 		chart=[['Projects', 'Progress', 'Remaining', 'Link']]
 		row=1
@@ -20,13 +19,38 @@ module StatisticsHelper
     if width_value == 0
       prog_bar="progress-bar-info"
       value=100
-    else
-      prog_bar="progress-bar-success"
+    else     
+      if calculate_task_delayed(project.tasks) == true
+        prog_bar="progress-bar-danger"
+      else
+        prog_bar="progress-bar-success"
+      end
       value=width_value
     end
     html="<div class='progress'><a href=#{link_project}><div class='progress-bar #{prog_bar}' role='progressbar' aria-valuemin='#{value}' aria-valuemax='100' style='width: #{value}%'>#{width_value}%</div></a></div>"
   end
 
+  def calculate_task_delayed(tasks)
+    value=false
+    tasks.each do |task|
+      if task.deadline.present?
+        date_actual=DateTime.now.to_date.to_s
+        date_dl_task=task.deadline.to_date.to_s     
+        if (date_dl_task < date_actual) && (task.state.name != "CLOSED")
+          value=true
+        end
+      end
+    end
+
+    return value
+  end
+
+  def flag_project(tasks)
+    if calculate_task_delayed(tasks) == true
+      content_tag(:span, '',:class=>"glyphicon glyphicon-flag delayed")
+    end
+  end
+  
   def complexity_value(task)
     return task[:complexity].to_f + 1
   end 

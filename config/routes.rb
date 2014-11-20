@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get "projects/filter/:scope" => "projects#index", as: :filtered_projects
   get "statistics/show", as: :show_statistics
+  get "statistics/filter/:scope" => "statistics#index", as: :filtered_statistics
 
 
   resources :projects do
