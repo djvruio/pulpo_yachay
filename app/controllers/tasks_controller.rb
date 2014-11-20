@@ -17,7 +17,7 @@ class TasksController < ApplicationController
 
   def assigned_to_me
 
-      @tasks =  Task.all.where("assigned_to_id = ?", current_user).order(deadline: :desc)
+      @tasks =  Task.all.where("assigned_to_id = ?", current_user).order(project_id: :asc, deadline: :desc)
 
   end
 

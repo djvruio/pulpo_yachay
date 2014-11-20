@@ -4,12 +4,16 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <b>Tarea: <%= task.description %></b>
-        <b><span class="pull-right">Estado: <%= format_My_task_states(task) %></span></b>
+        <b>Proyecto:</b> <%=task.assigned_project.try(:alias)  %>
+        <b><span class="pull-right">Estado: <%= format_task_states(task) %></span></b>
       </div><!--/panel-heading-->
       <div class="panel-body">
         <table>
           <tr>
+            <td width="300">
+              <b>Descripción:</b>
+              <%= task.description %>
+            </td>
             <td width="250" >
               <b>Fecha limite:</b>
               <%=task.deadline? ? task.deadline.strftime("%d %B, %Y") : 'Not set Yet '  %>
@@ -18,11 +22,12 @@
               <b>Fecha fin real:</b>
               <%=task.real_deadline? ? task.real_deadline.strftime("%d %B, %Y") : 'Not set Yet ' %>
             </td>
-
+<!--
             <td width="100" align="center">
               <b>Puntuacion:</b>
               <%=task.score  %>
             </td>
+-->            
             <td  width="180">
               <b>Complejidad:</b>
               <%=format_My_task_complexity(task)  %>
@@ -33,10 +38,6 @@
           <thead>
           </thead>
           <tr >
-            <td width="300">
-              <b>Proyecto:</b>
-              <%=task.assigned_project.try(:alias)  %>
-            </td>
           </tr>
         </table>
       </div><!--/panel-body-->
