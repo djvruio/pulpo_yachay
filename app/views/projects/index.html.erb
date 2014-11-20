@@ -8,7 +8,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4><b><%= format_is_critical(project,'') %> <%= link_to(project.alias, project_tasks_path(project)) %> <%= format_status(project,'right') %></b></h4>
-      <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= project.tasks.count %></span></h6>
+      <h6 class="panel-title"><span class="pull-right">Total de Tareas: <%= project.tasks.count %></span></h6>
       <br>
           <%= raw generate_bar(project) %>
     </div><!--/panel-heading--> 

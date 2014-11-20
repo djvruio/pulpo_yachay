@@ -1,14 +1,14 @@
 <!--
-<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-primary' %>
-<%= link_to "Back", projects_path, :class => 'btn btn-primary' %> | 
-<%= link_to "Edit Project", edit_project_path(@project), :class => 'btn btn-primary' %> 
+<%= link_to 'Crear Tarea', new_project_task_path(@project), :class => 'btn btn-primary' %>
+<%= link_to "Atras", projects_path, :class => 'btn btn-primary' %> |
+<%= link_to "Editar Proyecto", edit_project_path(@project), :class => 'btn btn-primary' %>
 -->
-<%= link_to "Back", projects_path, :class => 'btn btn-default' %> | 
-<%= link_to "Details Project", project_path(@project), :class => 'btn btn-default' %> 
-<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-default' %>
+<%= link_to "Atras", projects_path, :class => 'btn btn-default' %> |
+<%= link_to "Detalles Proyecto", project_path(@project), :class => 'btn btn-default' %>
+<%= link_to 'Crear Tarea', new_project_task_path(@project), :class => 'btn btn-default' %>
 <hr>
 <div class="panel-heading">
-      <h6 class="panel-title">Total Progress of Project <%= link_to(@project.name, @project)%></h6>
+      <h6 class="panel-title">Progreso Total de Proyecto: <%= link_to(@project.name, @project)%></h6>
       <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= @tasks.count %></span></h6>
       <br>
       <div class="progress">
@@ -16,7 +16,7 @@
         </div>
       </div>      
     </div><!--/panel-heading--> 
-      <h3>Listing tasks for <%= link_to(@project.name, @project)%></h3>
+      <h3>Listado de Tareas para: <%= link_to(@project.name, @project)%></h3>
 <hr>
 
 <% @tasks.each do |task| %>
@@ -28,19 +28,19 @@
           <%=flag_task_deadline(task)%>
         </td>
         <td width="200">
-          <strong>Deadline:</strong> <br> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
+          <strong>Fecha Fin:</strong> <br> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
         </td>
         <td width="200">
-          <strong>Real Deadline:</strong> <br> <%= task.real_deadline? ? task.real_deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
+          <strong>Fecha Fin real:</strong> <br> <%= task.real_deadline? ? task.real_deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
         </td>
         <td width="180">
           <strong>Asignada a: </strong> <%= task.assigned.try(:email) %>
         </td>
         <td width="150" align="right">
-          <strong>Complexity: </strong> <%=format_task_complexity(task)%>
+          <strong>Complejidad: </strong> <%=format_task_complexity(task)%>
         </td>
         <td width="160" align="right">
-         <strong>Status: </strong>  <%= format_task_states(task) %>
+         <strong>Estado: </strong>  <%= format_task_states(task) %>
         </td>
       </table>
     </div><!--/panel-heading--> 
@@ -54,11 +54,11 @@
             <hr>
             <div class="actions">
               <% if task.assigned_to_id == current_user.id || current_user.admin? || task.assigned_to_id== nil  %>
-                <%= link_to "Edit Task", edit_project_task_path(@project, task) %> | <%= link_to "Delete task", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
+                <%= link_to "Editar Tarea", edit_project_task_path(@project, task) %> | <%= link_to "Eliminar Tarea", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
               <% else %>
-                <%= 'Cannot edit' %>
+                <%= 'NO Puede Editar' %>
               <% end %>
-              | <%= link_to 'All Impairments', project_task_inpairments_path(@project,task)  %>
+              | <%= link_to 'Impedimentos', project_task_inpairments_path(@project,task)  %>
             </div>
   
           </td>

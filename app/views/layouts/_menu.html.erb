@@ -3,10 +3,10 @@
 	<hr>
 	<ul class="nav nav-stacked">
 		<% if user_signed_in? %>
-			<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reports'.html_safe, statistics_path %></li>
-			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> All Projects'.html_safe, projects_path %></li>
-			<li><%= link_to '<i class="glyphicon glyphicon-check"></i> All Tasks'.html_safe %></li>
-		    <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alerts</a></li>
+			<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reportes'.html_safe, statistics_path %></li>
+			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Proyectos'.html_safe, projects_path %></li>
+            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Tareas'.html_safe, filtered_tasks_path(:my_tasks) %></li>
+		    <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alertas</a></li>
 		<% end %>
 	</ul>
 	<ul class="nav nav-stacked">
