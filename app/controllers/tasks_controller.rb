@@ -2,20 +2,23 @@ class TasksController < ApplicationController
   respond_to :html, :xml, :json
   
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project
+  #before_action :set_project
 
   def index
-
-    if current_user.admin?
-
+    case params[:scope]
+      when ''
+        @tasks = Task.all
+      else
+        @project = Project.find(params[:project_id])
+        @tasks = @project.tasks.order(deadline: :desc)
     end
-    if current_user.user?
-
-    end
-    #fail
-    #binding.pry
-    @tasks = @project.tasks.order(deadline: :desc)
     respond_with(@tasks)
+  end
+
+  def assigned_to_me
+
+      @tasks =  Task.all.where("assigned_to_id = ?", current_user).order(deadline: :desc)
+
   end
 
   def show
@@ -24,15 +27,19 @@ class TasksController < ApplicationController
 
   def new
     #binding.pry
+    @project = Project.find(params[:project_id])
     @task = @project.tasks.new
     #respond_with(@task)
   end
 
   def edit
+    @project = Project.find(params[:project_id])
+
     #binding.pry
   end
 
   def create
+    @project = Project.find(params[:project_id])
     @task = @project.tasks.new(task_params)
     @task.user_id = current_user
     if @task.save
@@ -43,6 +50,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    @project = Project.find(params[:project_id])
     if @task.update(task_params)
       redirect_to project_tasks_path(@project), notice: 'Task was successfully updated.'
     else
@@ -51,6 +59,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:project_id])
     @task.destroy
     respond_to do |format|
       format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully deleted.' }
@@ -67,7 +76,7 @@ class TasksController < ApplicationController
       params.require(:task).permit(:description, :deadline, :complexity, :score, :state_id, :project_id,:assigned_to_id,:real_deadline)
     end
 
-    def set_project
-      @project = Project.find(params[:project_id])
-    end
+    #def set_project
+    #  @project = Project.find(params[:project_id])
+    #end
 end

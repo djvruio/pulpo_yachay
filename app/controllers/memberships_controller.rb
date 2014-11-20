@@ -1,7 +1,6 @@
 class MembershipsController < ApplicationController
 	
 	before_filter :authenticate_user!
-# 	before_action :set_membership, only: [:destroy]
 	before_action :set_project
 
 	def index
@@ -37,10 +36,6 @@ class MembershipsController < ApplicationController
 
   private
 
-# def set_membership
-#   @membership = Membership.find(params[:id])
-# end
-
   def set_project
     @project = Project.find(params[:project_id])
   end
@@ -48,6 +43,5 @@ class MembershipsController < ApplicationController
 	def membership_params
 		params.require(:membership).permit(:responsible_role, :user_id, :project_id)
 	end
-
 
 end

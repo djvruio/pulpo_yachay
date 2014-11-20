@@ -5,6 +5,8 @@ class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :assigned, :class_name => "User", :foreign_key => "assigned_to_id"
 
+  belongs_to :assigned_project, :class_name => "Project", :foreign_key => "project_id"
+
   has_many :inpairments, :dependent => :destroy
 
   attr_reader :task_time

@@ -13,6 +13,21 @@ module TasksHelper
 		content_tag(:span, task.state.name, :class => var_class)					
 	end
 
+  def format_My_task_states(task)
+    case task.state_id
+      when 1
+        content_tag(:label, 'ABIERTA', :class => 'label pull-right label-warning')
+      when 2
+        content_tag(:label, 'CERRADA', :class => 'label pull-right label-success')
+      when 3
+        content_tag(:label, 'RETRASADA', :class => 'label pull-right label-danger')
+      else
+        content_tag(:label, 'EN PROGRESO', :class => 'label pull-right label-progress')
+    end
+
+  end
+
+
   def format_assigned_to(task)
     if task.assigned_to_id.present?
       content_tag(:span,task.assigned.try(:email) , :class => "label pull-right label-warning")
@@ -34,7 +49,24 @@ module TasksHelper
 		when 'very_dificult'
   			content_tag(:span, 'very_dificult', :class => "label pull-right label-danger") 
 		end
-	end
+  end
+
+  def format_My_task_complexity(task)
+    #binding.pry
+    case task.complexity
+      when '(1 día) easier'
+        content_tag(:label, 'Muy Facil', :class => "label pull-right label-success")
+      when '(2 días) easy'
+        content_tag(:label, 'Facil', :class => "label pull-right label-success")
+      when '(3 días) medium'
+        content_tag(:label, 'Media', :class => "label pull-right label-info")
+      when '(4 días) dificult'
+        content_tag(:label, 'Dificil', :class => "label pull-right label-danger")
+      when '(5 días) very_dificult'
+        content_tag(:label, 'Muy Dificil', :class => "label pull-right label-danger")
+    end
+  end
+
   def flag_task_deadline(task)
     if task.deadline.present?
         date_actual=DateTime.now.to_date.to_s
