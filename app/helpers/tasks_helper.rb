@@ -26,7 +26,7 @@ module TasksHelper
     end
   end	
 
-	def format_task_complexity(task)
+	def format_task_complexity_en(task)
 		case task.complexity
 		when 'easier'
   			content_tag(:span, 'easier', :class => "label pull-right label-success") 
@@ -41,7 +41,7 @@ module TasksHelper
 		end
   end
 
-  def format_My_task_complexity(task)
+  def format_task_complexity(task)
     #binding.pry
     case task.complexity
       when '(1 día) easier'
