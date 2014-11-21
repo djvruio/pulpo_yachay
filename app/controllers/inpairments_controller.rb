@@ -10,6 +10,10 @@ class InpairmentsController < ApplicationController
     respond_with(@inpairments)
   end
 
+  def impairments
+      @inpairments = Inpairment.find_by_sql("select projects.id as id_pro, projects.name,projects.description as descPro,projects.is_critical,projects.status ,tasks.description as taskdesc,tasks.id as task_id,inpairments.id as inpa_id,inpairments.description as inpadesc from tasks,inpairments,projects where inpairments.task_id = tasks.id and projects.id = tasks.project_id")
+  end
+
   def show
     respond_with(@inpairment)
   end
@@ -45,13 +49,11 @@ class InpairmentsController < ApplicationController
     @task = @project.tasks.find(params[:task_id])
     @inpairment =  @task.inpairments.find(params[:id])
 
-    respond_to do |format|
-      if @inpairment.update_attributes(params[:inpairment])
-        format.js { render json: @inpairment }
-      else
+    if @inpairment.update(inpairment_params)
+      redirect_to project_task_inpairments_path(@project,@task), notice:'Inpairment was successfully updated.'
+    else
         format.html { render action: "edit" }
         format.js { render json: @inpairment.errors, status: :unprocessable_entity }
-      end
     end
   end
 

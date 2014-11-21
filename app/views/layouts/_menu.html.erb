@@ -6,6 +6,9 @@
 			<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reportes'.html_safe, statistics_path %></li>
 			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Proyectos'.html_safe, projects_path %></li>
             <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Tareas'.html_safe, filtered_tasks_path(:my_tasks) %></li>
+          <% if current_user.admin? %>
+            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Impedimentos'.html_safe, filtered_impairments_path(:impar) %></li>
+          <% end %>
 		    <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alertas</a></li>
 		<% end %>
 	</ul>

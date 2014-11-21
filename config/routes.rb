@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get "assigned_to_me/filter/:scope", :to => 'tasks#assigned_to_me', as: :filtered_tasks
 
+  get "inpairments/filter/:scope", :to => 'inpairments#impairments', as: :filtered_impairments
+
   get "projects/filter/:scope" => "projects#index", as: :filtered_projects
 
   get "statistics/show", as: :show_statistics
