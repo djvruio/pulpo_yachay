@@ -1,7 +1,5 @@
 <h1>Mis Tareas Asignadas</h1>
-
   <% @tasks.each do |task| %>
-
     <div class="panel panel-default">
       <div class="panel-heading">
         <b>Proyecto:</b> <%=task.assigned_project.try(:alias)  %>
@@ -32,12 +30,6 @@
               <b>Complejidad:</b>
               <%=format_My_task_complexity(task)  %>
             </td>
-          </tr>
-        </table>
-        <table>
-          <thead>
-          </thead>
-          <tr >
           </tr>
         </table>
       </div><!--/panel-body-->
