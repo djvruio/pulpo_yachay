@@ -66,11 +66,11 @@ module ProjectsHelper
 		opc_align=alignment(align)
 		case project.status
 		when 'open'
-  			content_tag(:span, 'open', :class => "label #{opc_align} label-progress")
+  			content_tag(:span, 'open', :class => "label #{opc_align} label-info")
 		when 'closed'
   			content_tag(:span, 'closed', :class => "label #{opc_align} label-success")
 		when 'suspended'
-      content_tag(:span, 'suspended', :class => "label #{opc_align} label-default")
+      		content_tag(:span, 'suspended', :class => "label #{opc_align} label-default")
   		else
   			content_tag(:span, 'transferred', :class => "label #{opc_align} label-warning")
     end

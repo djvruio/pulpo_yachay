@@ -5,66 +5,12 @@ class ProjectsController < ApplicationController
 
 	def index
     if current_user.admin?
-      case params[:scope]
-        when 'open'
-          @projects = Project.open
-        when 'closed'
-          @projects = Project.closed
-        when 'suspended'
-          @projects = Project.suspended
-        when 'transferred'
-          @projects = Project.transferred
-        when 'open_is_strategic'
-          @projects = Project.open.where('is_strategic = ?',true)
-        when 'open_is_not_strategic'
-          @projects = Project.open.where('is_strategic = ?',false)
-        when 'closed_is_strategic'
-          @projects = Project.closed.where('is_strategic = ?',true)
-        when 'closed_is_not_strategic'
-          @projects = Project.closed.where('is_strategic = ?',false)
-        when 'open_is_critic'
-          @projects = Project.open.where('is_critical = ?',true)
-        when 'open_is_not_critic'
-          @projects = Project.open.where('is_critical = ?',false)
-        when 'closed_is_critic'
-          @projects = Project.closed.where('is_critical = ?',true)
-        when 'closed_is_not_critic'
-          @projects = Project.closed.where('is_critical = ?',false)
-        else
-          @projects = Project.all
-      end
-    end
-    if current_user.user?
-      case params[:scope]
-        when 'open'
-          @projects = current_user.projects.open
-        when 'closed'
-          @projects = current_user.projects.closed
-        when 'suspended'
-          @projects = current_user.projects.suspended
-        when 'transferred'
-          @projects = current_user.projects.transferred
-        when 'open_is_strategic'
-          @projects = current_user.projects.open.where('is_strategic = ?',true)
-        when 'open_is_not_strategic'
-          @projects = current_user.projects.open.where('is_strategic = ?',false)
-        when 'closed_is_strategic'
-          @projects = current_user.projects.closed.where('is_strategic = ?',true)
-        when 'closed_is_not_strategic'
-          @projects = current_user.projects.closed.where('is_strategic = ?',false)
-        when 'open_is_critic'
-          @projects = current_user.projects.open.where('is_critical = ?',true)
-        when 'open_is_not_critic'
-          @projects = current_user.projects.open.where('is_critical = ?',false)
-        when 'closed_is_critic'
-          @projects = current_user.projects.closed.where('is_critical = ?',true)
-        when 'closed_is_not_critic'
-          @projects = current_user.projects.closed.where('is_critical = ?',false)
-        else
-          @projects = current_user.projects.all
-      end
-    end
-	end
+      object=Project
+    else
+      object=current_user.projects
+    end  
+    @projects=general_filter(object,params[:scope])
+  end 
 
 	def show
     @openS = Project.open.where('is_strategic = ?',true)
@@ -112,4 +58,38 @@ class ProjectsController < ApplicationController
 	    def project_params
 	      params.require(:project).permit(:name, :description, :price, :is_strategic, :status,:is_critical,:alias,:remark,:estimated_start_date,:estimated_end_date,:real_start_date,:real_end_date, :goal_ids=>[])
 	    end
+
+  protected 
+  
+  def general_filter(object,criteria)
+    case criteria
+      when 'all'
+        filter = object.all
+      when 'closed'
+        filter = object.closed
+      when 'suspended'
+        filter = object.suspended
+      when 'transferred'
+        filter = object.transferred
+      when 'open_is_strategic'
+        filter = object.open.where('is_strategic = ?',true)
+      when 'open_is_not_strategic'
+        filter = object.open.where('is_strategic = ?',false)
+      when 'closed_is_strategic'
+        filter = object.closed.where('is_strategic = ?',true)
+      when 'closed_is_not_strategic'
+        filter = object.closed.where('is_strategic = ?',false)
+      when 'open_is_critic'
+        filter = object.open.where('is_critical = ?',true)
+      when 'open_is_not_critic'
+        filter = object.open.where('is_critical = ?',false)
+      when 'closed_is_critic'
+        filter = object.closed.where('is_critical = ?',true)
+      when 'closed_is_not_critic'
+        filter = object.closed.where('is_critical = ?',false)
+      else
+        filter = object.open
+    end
+    return filter
+  end
 end

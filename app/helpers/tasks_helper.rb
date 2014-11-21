@@ -70,16 +70,21 @@ module TasksHelper
   def flag_task_deadline(task)
     if task.deadline.present?
         date_actual=DateTime.now.to_date.to_s
-        date_dl_task=task.deadline.to_date.to_s
+        date_dl_task=task.deadline.to_date.to_s     
         if (date_dl_task >= date_actual)
           content_tag(:span, '',:class=>"glyphicon glyphicon-flag in-progress")
         else
-          content_tag(:span, '', :class => "glyphicon glyphicon-flag delayed")
+          if (task.state.name != "CLOSED")
+            content_tag(:span, '', :class => "glyphicon glyphicon-flag delayed")
+          else
+            content_tag(:span, '', :class => "glyphicon glyphicon-flag closed")
         end
+      end
     else
       content_tag(:span, '',:class=>"glyphicon glyphicon-flag No Set Yet")
     end
   end
+
 	def is_new_task(action)
 		case action
 		when 'new'
