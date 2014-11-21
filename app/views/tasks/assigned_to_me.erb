@@ -2,7 +2,7 @@
   <% @tasks.each do |task| %>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <b>Proyecto:</b> <%=task.assigned_project.try(:alias)  %>
+        <b>Proyecto:</b> <%= link_to(task.assigned_project.try(:alias).upcase, project_tasks_path(task.assigned_project.try(:id))) %>
         <b><span class="pull-right">Estado: <%= format_task_states(task) %></span></b>
       </div><!--/panel-heading-->
       <div class="panel-body">
@@ -10,7 +10,7 @@
           <tr>
             <td width="300">
               <b>Descripción:</b>
-              <%= task.description %>
+              <%= link_to(task.description,edit_project_task_path(task.assigned_project.try(:id), task)) %>
             </td>
             <td width="250" >
               <b>Fecha limite:</b>
