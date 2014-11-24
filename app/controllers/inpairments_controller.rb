@@ -11,7 +11,7 @@ class InpairmentsController < ApplicationController
   end
 
   def impairments
-      @inpairments = Inpairment.find_by_sql("select projects.id as id_pro, projects.name,projects.description as descPro,projects.is_critical,projects.status ,tasks.description as taskdesc,tasks.id as task_id,inpairments.id as inpa_id,inpairments.description as inpadesc from tasks,inpairments,projects where inpairments.task_id = tasks.id and projects.id = tasks.project_id")
+      @inpairments = Inpairment.find_by_sql("select projects.id as id_pro, projects.name,projects.description as descPro,projects.is_critical,projects.status ,tasks.description as taskdesc,tasks.id as task_id,inpairments.id as inpa_id,inpairments.description as inpadesc from tasks,inpairments,projects where inpairments.task_id = tasks.id and projects.id = tasks.project_id order by projects.id ASC")
   end
 
   def show

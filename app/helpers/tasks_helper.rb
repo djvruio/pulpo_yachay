@@ -1,32 +1,22 @@
 module TasksHelper
 	def format_task_states(task)
+    states = State.all.order(id: :asc)
 		case task.state.name
-		when 'OPEN'
-  			var_class='label pull-right label-warning'
-		when 'CLOSED'
+		when states[0].name
+      #OPEN
+  		var_class='label pull-right label-warning'
+		when states[1].name 
+      #'CLOSED'
   			var_class='label pull-right label-success'
-		when 'DELAYED'
-  			var_class='label pull-right label-danger'
-  		when 'IN PROGRESS'
-  			var_class='label pull-right label-progress'
+		when states[2].name
+      #'DELAYED'
+			var_class='label pull-right label-danger'
+		when states[3].name
+      #'IN PROGRESS'
+			var_class='label pull-right label-progress'
 		end				
-		content_tag(:span, task.state.name, :class => var_class)					
+		content_tag(:span, task.state.name, :class => var_class)
 	end
-
-  def format_My_task_states(task)
-    case task.state_id
-      when 1
-        content_tag(:label, 'ABIERTA', :class => 'label pull-right label-warning')
-      when 2
-        content_tag(:label, 'CERRADA', :class => 'label pull-right label-success')
-      when 3
-        content_tag(:label, 'RETRASADA', :class => 'label pull-right label-danger')
-      else
-        content_tag(:label, 'EN PROGRESO', :class => 'label pull-right label-progress')
-    end
-
-  end
-
 
   def format_assigned_to(task)
     if task.assigned_to_id.present?
@@ -36,7 +26,7 @@ module TasksHelper
     end
   end	
 
-	def format_task_complexity(task)
+	def format_task_complexity_en(task)
 		case task.complexity
 		when 'easier'
   			content_tag(:span, 'easier', :class => "label pull-right label-success") 
@@ -51,7 +41,7 @@ module TasksHelper
 		end
   end
 
-  def format_My_task_complexity(task)
+  def format_task_complexity(task)
     #binding.pry
     case task.complexity
       when '(1 día) easier'
@@ -68,13 +58,18 @@ module TasksHelper
   end
 
   def flag_task_deadline(task)
+    state="CERRADA"
     if task.deadline.present?
         date_actual=DateTime.now.to_date.to_s
         date_dl_task=task.deadline.to_date.to_s     
         if (date_dl_task >= date_actual)
-          content_tag(:span, '',:class=>"glyphicon glyphicon-flag in-progress")
+          if (task.state.name != state)          
+            content_tag(:span, '',:class=>"glyphicon glyphicon-flag in-progress")
+          else
+            content_tag(:span, '', :class => "glyphicon glyphicon-flag closed")
+          end
         else
-          if (task.state.name != "CLOSED")
+          if (task.state.name != state)
             content_tag(:span, '', :class => "glyphicon glyphicon-flag delayed")
           else
             content_tag(:span, '', :class => "glyphicon glyphicon-flag closed")

@@ -32,11 +32,12 @@ module StatisticsHelper
 
   def calculate_task_delayed(tasks)
     value=false
+    state="CERRADA"
     tasks.each do |task|
       if task.deadline.present?
         date_actual=DateTime.now.to_date.to_s
         date_dl_task=task.deadline.to_date.to_s     
-        if (date_dl_task < date_actual) && (task.state.name != "CLOSED")
+        if (date_dl_task < date_actual) && (task.state.name != state)
           value=true
         end
       end
@@ -62,9 +63,9 @@ module StatisticsHelper
   def calculate_statistics(tasks)
     #Status {'OPEN'=>1,'CLOSE'=>2,'DELAYED'=>3,'IN_PROGRESS'=>4}
     #Complexity {'EASIER'=>1,'EASY'=>2,'MEDIUM'=>3,'DIFICULT'=>4,'VERY_DIFICULT'=>5}
+    states = State.all.order(id: :asc)
     if tasks[0].nil?
       value=0
-      puts "Value: #{value}"
     else
       sum_complexity_work=0
       sum_open_work=0
@@ -76,13 +77,17 @@ module StatisticsHelper
       tasks.each do |task|
         sum_complexity_work+=complexity_value(task)
         case (task.state.name)
-        when 'OPEN'
+        when states[0].name
+          #'OPEN'
           sum_open_work+=complexity_value(task)
-        when 'CLOSED'
+        when states[1].name
+          #'CLOSED'
           sum_closed_work+=complexity_value(task)
-        when 'DELAYED'
+        when states[2].name
+          #'DELAYED'
           sum_delayed_work+=complexity_value(task)
-        when 'IN PROGRESS'
+        when states[3].name
+          #'IN PROGRESS'
           sum_in_progress_work+=complexity_value(task)
         end      
       end

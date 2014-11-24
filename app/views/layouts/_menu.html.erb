@@ -2,19 +2,6 @@
 	<h3>Menu</h3>
 	<hr>
 	<ul class="nav nav-stacked">
-		<% if user_signed_in? %>
-			<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reportes'.html_safe, statistics_path %></li>
-			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Proyectos'.html_safe, projects_path %></li>
-            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Tareas'.html_safe, filtered_tasks_path(current_user) %></li>
-          <% if current_user.admin? %>
-            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Impedimentos'.html_safe, filtered_impairments_path(:impar) %></li>
-            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Tareas x Usuario'.html_safe, filtered_users_path(:choose) %></li>
-
-          <% end %>
-		    <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alertas</a></li>
-		<% end %>
-	</ul>
-	<ul class="nav nav-stacked">
 	    <% if user_signed_in? %>
 	      <div class="dropdown">
 	        <li class="dropdown-toggle glyphicon glyphicon-eye-open" id="dropdownMenu1" data-toggle="dropdown">
@@ -60,6 +47,16 @@
 		</ul>
 	<% end %>
 	<hr>
-
-
+	<ul class="nav nav-stacked">
+		<% if user_signed_in? %>
+			<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reportes'.html_safe, statistics_path %></li>
+			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Proyectos'.html_safe, projects_path %></li>
+            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Tareas'.html_safe, filtered_tasks_path(current_user) %></li>
+          <% if current_user.admin? %>
+            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Impedimentos'.html_safe, filtered_impairments_path(:impar) %></li>
+            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Tareas x Usuario'.html_safe, filtered_users_path(:choose) %></li>
+          <% end %>
+		    <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alertas</a></li>
+		<% end %>
+	</ul>
 </div><!--/col-sm-3 left-->
