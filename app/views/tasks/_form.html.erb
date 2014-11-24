@@ -70,7 +70,7 @@
                 <td width="100">
                     <center>
                       <%= f.label "Assigned to" %><br>
-                      <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
+                      <%= collection_select(:task, :assigned_to_id, User.all.order(email: :asc), :id, :email, {:prompt => 'No one assigned'}) %>
                     </center>
                 </td>
 
