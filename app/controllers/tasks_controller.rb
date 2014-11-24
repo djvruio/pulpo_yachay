@@ -6,8 +6,9 @@ class TasksController < ApplicationController
 
   def index
     case params[:scope]
+
       when ''
-        @tasks = Task.all
+        @tasks =  Task.all.where("assigned_to_id = ?", current_user).order(deadline: :desc)
       else
         @project = Project.find(params[:project_id])
         @tasks = @project.tasks.order(deadline: :desc)
@@ -16,7 +17,7 @@ class TasksController < ApplicationController
   end
 
   def assigned_to_me
-      @tasks =  Task.all.where("assigned_to_id = ?", current_user).order(deadline: :desc)
+      @tasks =  Task.all.where("assigned_to_id = ?", params[:scope]).order(deadline: :desc)
   end
 
   def show

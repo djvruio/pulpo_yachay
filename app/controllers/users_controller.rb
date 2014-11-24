@@ -3,6 +3,15 @@ class UsersController < ApplicationController
   before_filter :admin_only, :except => :show
 
   def index
+    case params[:scope]
+      when ''
+        @users = User.all
+      else
+        @users = User.all
+    end
+  end
+
+  def choose_user()
     @users = User.all
   end
 

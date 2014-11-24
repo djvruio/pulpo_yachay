@@ -15,6 +15,7 @@ class Task < ActiveRecord::Base
 
   #enum complexity: [:easier,:easy,:medium,:difficult,:hard]
   enum score: [:bad, :more_or_less, :good]
+
   #enum status: [:open, :close, :delayed, :in_progress]
 
   #after_initialize :set_default_status, :if => :new_record?
@@ -24,7 +25,6 @@ class Task < ActiveRecord::Base
   after_initialize :set_default_real_deadline, :if => :new_record?
 
   validates :description, presence: true
-
 
   def set_default_deadline
     if self.deadline.present?

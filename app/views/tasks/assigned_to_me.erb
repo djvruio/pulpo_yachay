@@ -1,4 +1,4 @@
-<h1>Mis Tareas Asignadas</h1>
+<h1>Tareas Asignadas</h1>
 
   <% @tasks.each do |task| %>
 
@@ -36,6 +36,10 @@
             <td width="300">
               <b>Proyecto:</b>
               <%=task.assigned_project.try(:alias)  %>
+            </td>
+            <td width="300">
+              <b>Correo:</b>
+              <%=task.assigned.try(:email) %>
             </td>
           </tr>
         </table>
